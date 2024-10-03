@@ -1,0 +1,18 @@
+/* Import fonts */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Make sure page is taking full space */
+body, html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
