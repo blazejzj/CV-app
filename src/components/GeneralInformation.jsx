@@ -55,15 +55,15 @@ function GeneralInformation() {
             <div>
                 <h1>General Information</h1>
                 <div>
-                    <label htmlFor="name">Name</label>
+                    <p>Name</p>
                     <p>{name}</p>
                 </div>
                 <div>
-                    <label htmlFor="email">E-mail</label>
+                    <p>E-mail</p>
                     <p>{email}</p>
                 </div>
                 <div>
-                    <label htmlFor="phoneNumber">Phone Number</label>
+                    <p>Phone Number</p>
                     <p>{phoneNumber}</p>
                 </div>
                 <button type="button" onClick={() => setIsEditing(true)}>
