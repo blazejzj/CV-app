@@ -1,16 +1,15 @@
 import { useState } from "react";
 
 function EducationExperience() {
-    // State for the list of education entries
     const [educationList, setEducationList] = useState([]);
 
-    // State for form data and editing
     const [formData, setFormData] = useState({
         schoolName: "",
         titleOfStudy: "",
         startDateOfStudy: "",
         endDateOfStudy: "",
     });
+
     const [isEditing, setIsEditing] = useState(false);
     const [editEntryId, setEditEntryId] = useState(null);
 
@@ -43,7 +42,6 @@ function EducationExperience() {
         setEditEntryId(null);
     };
 
-    // Start editing an entry
     const handleEditEntry = (entryId) => {
         const entryToEdit = educationList.find((entry) => entry.id === entryId);
         setFormData({
@@ -56,14 +54,12 @@ function EducationExperience() {
         setEditEntryId(entryId);
     };
 
-    // Delete an entry
     const handleDeleteEntry = (entryId) => {
         setEducationList((prevList) =>
             prevList.filter((entry) => entry.id !== entryId)
         );
     };
 
-    // Cancel editing
     const handleCancelEdit = () => {
         setFormData({
             schoolName: "",
@@ -75,7 +71,6 @@ function EducationExperience() {
         setEditEntryId(null);
     };
 
-    // Render the form
     const renderForm = () => (
         <div>
             <h2>{editEntryId !== null ? "Edit Education" : "Add Education"}</h2>
@@ -131,7 +126,6 @@ function EducationExperience() {
         </div>
     );
 
-    // Render the list of education entries
     const renderEducationEntries = () => (
         <div>
             {educationList.map((entry) => (
