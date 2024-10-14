@@ -1,0 +1,21 @@
+// OTHERS
+@import "reset";
+@import "base";
+@import "mixins";
+@import "variables";
+
+// MAIN / ROOT
+#root {
+    @include fullSize;
+    display: grid;
+    grid-template-columns: 25% 75%;
+    margin: 3rem;
+}
+
+.app__userInput {
+    @include fullSize;
+    @include gridPlaceItemsSpaceBetween;
+    display: grid;
+}
+
+// COMPONENTS

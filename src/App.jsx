@@ -1,4 +1,4 @@
-import "./App.css";
+import "./styles/main.scss";
 import GeneralInformation from "./components/GeneralInformation";
 import EducationExperience from "./components/EducationExperience";
 import PracticalExperience from "./components/PracticalExperience";
@@ -7,14 +7,12 @@ import PracticalExperience from "./components/PracticalExperience";
 function App() {
     return (
         <>
-            <div className="user-input">
+            <div className="app__userInput">
                 <GeneralInformation />
                 <EducationExperience />
                 <PracticalExperience />
             </div>
-            {/* <div className='user-output'>
-        <CVPreview />
-      </div> */}
+            <div className="app__userOutput"></div>
         </>
     );
 }
