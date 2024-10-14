@@ -10,48 +10,42 @@ function EducationExperience() {
         endDateOfStudy: "",
     });
 
-    const [isEditing, setIsEditing] = useState(false);
-    const [editEntryId, setEditEntryId] = useState(null);
+    const [isAdding, setIsAdding] = useState(false);
 
+    // handle input changes -> for new entry form
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
 
+    // new education entry
     const handleFormSubmit = (e) => {
         e.preventDefault();
 
-        if (editEntryId !== null) {
-            setEducationList((prevList) =>
-                prevList.map((entry) =>
-                    entry.id === editEntryId ? { ...entry, ...formData } : entry
-                )
-            );
-        } else {
-            const newEntry = { id: Date.now(), ...formData };
-            setEducationList([...educationList, newEntry]);
-        }
+        const newEntry = {
+            id: Date.now(),
+            ...formData,
+            isEditing: false,
+        };
 
+        setEducationList([...educationList, newEntry]); // add the entry
+
+        // reset form after adding entry
         setFormData({
             schoolName: "",
             titleOfStudy: "",
             startDateOfStudy: "",
             endDateOfStudy: "",
         });
-        setIsEditing(false);
-        setEditEntryId(null);
+        setIsAdding(false);
     };
 
     const handleEditEntry = (entryId) => {
-        const entryToEdit = educationList.find((entry) => entry.id === entryId);
-        setFormData({
-            schoolName: entryToEdit.schoolName,
-            titleOfStudy: entryToEdit.titleOfStudy,
-            startDateOfStudy: entryToEdit.startDateOfStudy,
-            endDateOfStudy: entryToEdit.endDateOfStudy,
-        });
-        setIsEditing(true);
-        setEditEntryId(entryId);
+        setEducationList((prevList) =>
+            prevList.map((entry) =>
+                entry.id === entryId ? { ...entry, isEditing: true } : entry
+            )
+        );
     };
 
     const handleDeleteEntry = (entryId) => {
@@ -60,20 +54,28 @@ function EducationExperience() {
         );
     };
 
-    const handleCancelEdit = () => {
-        setFormData({
-            schoolName: "",
-            titleOfStudy: "",
-            startDateOfStudy: "",
-            endDateOfStudy: "",
-        });
-        setIsEditing(false);
-        setEditEntryId(null);
+    const handleEditFormSubmit = (e, entryId) => {
+        e.preventDefault();
+        setEducationList((prevList) =>
+            prevList.map((entry) =>
+                entry.id === entryId ? { ...entry, isEditing: false } : entry
+            )
+        );
     };
 
-    const renderForm = () => (
+    const handleEditInputChange = (e, entryId) => {
+        const { name, value } = e.target;
+        setEducationList((prevList) =>
+            prevList.map((entry) =>
+                entry.id === entryId ? { ...entry, [name]: value } : entry
+            )
+        );
+    };
+
+    // render the form for adding a new education entry
+    const renderAddForm = () => (
         <div>
-            <h2>{editEntryId !== null ? "Edit Education" : "Add Education"}</h2>
+            <h2>Add Education</h2>
             <form onSubmit={handleFormSubmit}>
                 <div>
                     <label htmlFor="schoolName">School Name</label>
@@ -118,42 +120,114 @@ function EducationExperience() {
                         onChange={handleInputChange}
                     />
                 </div>
-                <button type="submit">Save</button>
-                <button type="button" onClick={handleCancelEdit}>
+                <button type="submit">Add</button>
+                <button type="button" onClick={() => setIsAdding(false)}>
                     Cancel
                 </button>
             </form>
         </div>
     );
 
+    // render the list of education entries
     const renderEducationEntries = () => (
         <div>
-            {educationList.map((entry) => (
-                <div key={entry.id}>
-                    <h3>{entry.schoolName}</h3>
-                    <p>{entry.titleOfStudy}</p>
-                    <p>
-                        {entry.startDateOfStudy} -{" "}
-                        {entry.endDateOfStudy || "Present"}
-                    </p>
-                    <button onClick={() => handleEditEntry(entry.id)}>
-                        Edit
-                    </button>
-                    <button onClick={() => handleDeleteEntry(entry.id)}>
-                        Delete
-                    </button>
-                </div>
-            ))}
+            {educationList.map((entry) =>
+                entry.isEditing ? (
+                    // Render the edit form within the entry
+                    <div key={entry.id}>
+                        <form
+                            onSubmit={(e) => handleEditFormSubmit(e, entry.id)}
+                        >
+                            <div>
+                                <label htmlFor={`schoolName-${entry.id}`}>
+                                    School Name
+                                </label>
+                                <input
+                                    type="text"
+                                    id={`schoolName-${entry.id}`}
+                                    name="schoolName"
+                                    value={entry.schoolName}
+                                    onChange={(e) =>
+                                        handleEditInputChange(e, entry.id)
+                                    }
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor={`titleOfStudy-${entry.id}`}>
+                                    Title of Study
+                                </label>
+                                <input
+                                    type="text"
+                                    id={`titleOfStudy-${entry.id}`}
+                                    name="titleOfStudy"
+                                    value={entry.titleOfStudy}
+                                    onChange={(e) =>
+                                        handleEditInputChange(e, entry.id)
+                                    }
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor={`startDateOfStudy-${entry.id}`}>
+                                    Start Date
+                                </label>
+                                <input
+                                    type="month"
+                                    id={`startDateOfStudy-${entry.id}`}
+                                    name="startDateOfStudy"
+                                    value={entry.startDateOfStudy}
+                                    onChange={(e) =>
+                                        handleEditInputChange(e, entry.id)
+                                    }
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor={`endDateOfStudy-${entry.id}`}>
+                                    End Date
+                                </label>
+                                <input
+                                    type="month"
+                                    id={`endDateOfStudy-${entry.id}`}
+                                    name="endDateOfStudy"
+                                    value={entry.endDateOfStudy}
+                                    onChange={(e) =>
+                                        handleEditInputChange(e, entry.id)
+                                    }
+                                />
+                            </div>
+                            <button type="submit">Save</button>
+                        </form>
+                    </div>
+                ) : (
+                    // Render the entry in view mode
+                    <div key={entry.id}>
+                        <h3>{entry.schoolName}</h3>
+                        <p>{entry.titleOfStudy}</p>
+                        <p>
+                            {entry.startDateOfStudy} -{" "}
+                            {entry.endDateOfStudy || "Present"}
+                        </p>
+                        <button onClick={() => handleEditEntry(entry.id)}>
+                            Edit
+                        </button>
+                        <button onClick={() => handleDeleteEntry(entry.id)}>
+                            Delete
+                        </button>
+                    </div>
+                )
+            )}
         </div>
     );
 
     return (
         <div>
             <h1>Education Experience</h1>
-            {isEditing ? (
-                renderForm()
+            {isAdding ? (
+                renderAddForm()
             ) : (
-                <button onClick={() => setIsEditing(true)}>
+                <button onClick={() => setIsAdding(true)}>
                     + Add Education
                 </button>
             )}

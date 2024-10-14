@@ -11,28 +11,27 @@ function PracticalExperience() {
         endDate: "",
     });
 
-    const [isEditing, setIsEditing] = useState(false);
-    const [editEntryId, setEditEntryId] = useState(null);
+    const [isAdding, setIsAdding] = useState(false);
 
+    // input changes for the add new entry form
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
 
+    // new practical experience entry
     const handleFormSubmit = (e) => {
         e.preventDefault();
 
-        if (editEntryId !== null) {
-            setPracticalExperienceList((prevList) =>
-                prevList.map((entry) =>
-                    entry.id === editEntryId ? { ...entry, ...formData } : entry
-                )
-            );
-        } else {
-            const newEntry = { id: Date.now(), ...formData };
-            setPracticalExperienceList([...practicalExperienceList, newEntry]);
-        }
+        const newEntry = {
+            id: Date.now(),
+            ...formData,
+            isEditing: false,
+        };
 
+        setPracticalExperienceList([...practicalExperienceList, newEntry]);
+
+        // Reset form
         setFormData({
             companyName: "",
             positionTitle: "",
@@ -40,24 +39,34 @@ function PracticalExperience() {
             startDate: "",
             endDate: "",
         });
-
-        setIsEditing(false);
-        setEditEntryId(null);
+        setIsAdding(false);
     };
 
     const handleEditEntry = (entryId) => {
-        const entryToEdit = practicalExperienceList.find(
-            (entry) => entry.id === entryId
+        setPracticalExperienceList((prevList) =>
+            prevList.map((entry) =>
+                entry.id === entryId ? { ...entry, isEditing: true } : entry
+            )
         );
-        setFormData({
-            companyName: entryToEdit.companyName,
-            positionTitle: entryToEdit.positionTitle,
-            mainResponsibilities: entryToEdit.mainResponsibilities,
-            startDate: entryToEdit.startDate,
-            endDate: entryToEdit.endDate,
-        });
-        setIsEditing(true);
-        setEditEntryId(entryId);
+    };
+
+    // handle input changes for the edit form within an entry
+    const handleEditInputChange = (e, entryId) => {
+        const { name, value } = e.target;
+        setPracticalExperienceList((prevList) =>
+            prevList.map((entry) =>
+                entry.id === entryId ? { ...entry, [name]: value } : entry
+            )
+        );
+    };
+
+    const handleEditFormSubmit = (e, entryId) => {
+        e.preventDefault();
+        setPracticalExperienceList((prevList) =>
+            prevList.map((entry) =>
+                entry.id === entryId ? { ...entry, isEditing: false } : entry
+            )
+        );
     };
 
     const handleDeleteEntry = (entryId) => {
@@ -66,25 +75,10 @@ function PracticalExperience() {
         );
     };
 
-    const handleCancelEdit = () => {
-        setFormData({
-            companyName: "",
-            positionTitle: "",
-            mainResponsibilities: "",
-            startDate: "",
-            endDate: "",
-        });
-        setIsEditing(false);
-        setEditEntryId(null);
-    };
-
-    const renderForm = () => (
+    // render the form for adding a new practical experience entry
+    const renderAddForm = () => (
         <div>
-            <h2>
-                {editEntryId !== null
-                    ? "Edit Practical Experience"
-                    : "Add Practical Experience"}
-            </h2>
+            <h2>Add Practical Experience</h2>
             <form onSubmit={handleFormSubmit}>
                 <div>
                     <label htmlFor="companyName">Company Name</label>
@@ -95,6 +89,7 @@ function PracticalExperience() {
                         value={formData.companyName}
                         onChange={handleInputChange}
                         required
+                        placeholder="e.g., ABC Corp"
                     />
                 </div>
                 <div>
@@ -106,6 +101,7 @@ function PracticalExperience() {
                         value={formData.positionTitle}
                         onChange={handleInputChange}
                         required
+                        placeholder="e.g., Software Engineer"
                     />
                 </div>
                 <div>
@@ -113,12 +109,12 @@ function PracticalExperience() {
                         Main Responsibilities
                     </label>
                     <textarea
-                        type="text"
                         id="mainResponsibilities"
                         name="mainResponsibilities"
                         value={formData.mainResponsibilities}
                         onChange={handleInputChange}
                         required
+                        placeholder="Describe your main tasks"
                     ></textarea>
                 </div>
                 <div>
@@ -142,42 +138,131 @@ function PracticalExperience() {
                         onChange={handleInputChange}
                     />
                 </div>
-                <button type="submit">Save</button>
-                <button type="button" onClick={handleCancelEdit}>
+                <button type="submit">Add</button>
+                <button type="button" onClick={() => setIsAdding(false)}>
                     Cancel
                 </button>
             </form>
         </div>
     );
 
+    // render the list of practical experience entries
     const renderPracticalEntries = () => (
         <div>
-            {practicalExperienceList.map((entry) => (
-                <div key={entry.id}>
-                    <h3>{entry.companyName}</h3>
-                    <p>{entry.positionTitle}</p>
-                    <p>{entry.mainResponsibilities}</p>
-                    <p>
-                        {entry.startDate} - {entry.endDate || "Present"}
-                    </p>
-                    <button onClick={() => handleEditEntry(entry.id)}>
-                        Edit
-                    </button>
-                    <button onClick={() => handleDeleteEntry(entry.id)}>
-                        Delete
-                    </button>
-                </div>
-            ))}
+            {practicalExperienceList.map((entry) =>
+                entry.isEditing ? (
+                    // Render the edit form within the entry
+                    <div key={entry.id}>
+                        <form
+                            onSubmit={(e) => handleEditFormSubmit(e, entry.id)}
+                        >
+                            <div>
+                                <label htmlFor={`companyName-${entry.id}`}>
+                                    Company Name
+                                </label>
+                                <input
+                                    type="text"
+                                    id={`companyName-${entry.id}`}
+                                    name="companyName"
+                                    value={entry.companyName}
+                                    onChange={(e) =>
+                                        handleEditInputChange(e, entry.id)
+                                    }
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor={`positionTitle-${entry.id}`}>
+                                    Position Title
+                                </label>
+                                <input
+                                    type="text"
+                                    id={`positionTitle-${entry.id}`}
+                                    name="positionTitle"
+                                    value={entry.positionTitle}
+                                    onChange={(e) =>
+                                        handleEditInputChange(e, entry.id)
+                                    }
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label
+                                    htmlFor={`mainResponsibilities-${entry.id}`}
+                                >
+                                    Main Responsibilities
+                                </label>
+                                <textarea
+                                    id={`mainResponsibilities-${entry.id}`}
+                                    name="mainResponsibilities"
+                                    value={entry.mainResponsibilities}
+                                    onChange={(e) =>
+                                        handleEditInputChange(e, entry.id)
+                                    }
+                                    required
+                                ></textarea>
+                            </div>
+                            <div>
+                                <label htmlFor={`startDate-${entry.id}`}>
+                                    Start Date
+                                </label>
+                                <input
+                                    type="month"
+                                    id={`startDate-${entry.id}`}
+                                    name="startDate"
+                                    value={entry.startDate}
+                                    onChange={(e) =>
+                                        handleEditInputChange(e, entry.id)
+                                    }
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor={`endDate-${entry.id}`}>
+                                    End Date
+                                </label>
+                                <input
+                                    type="month"
+                                    id={`endDate-${entry.id}`}
+                                    name="endDate"
+                                    value={entry.endDate}
+                                    onChange={(e) =>
+                                        handleEditInputChange(e, entry.id)
+                                    }
+                                />
+                            </div>
+                            <button type="submit">Save</button>
+                            {/* Removed the Cancel button here */}
+                        </form>
+                    </div>
+                ) : (
+                    // Render the entry in view mode
+                    <div key={entry.id}>
+                        <h3>{entry.companyName}</h3>
+                        <p>{entry.positionTitle}</p>
+                        <p>{entry.mainResponsibilities}</p>
+                        <p>
+                            {entry.startDate} - {entry.endDate || "Present"}
+                        </p>
+                        <button onClick={() => handleEditEntry(entry.id)}>
+                            Edit
+                        </button>
+                        <button onClick={() => handleDeleteEntry(entry.id)}>
+                            Delete
+                        </button>
+                    </div>
+                )
+            )}
         </div>
     );
 
     return (
         <div>
             <h1>Practical Experience</h1>
-            {isEditing ? (
-                renderForm()
+            {isAdding ? (
+                renderAddForm()
             ) : (
-                <button onClick={() => setIsEditing(true)}>
+                <button onClick={() => setIsAdding(true)}>
                     + Add Practical Experience
                 </button>
             )}
