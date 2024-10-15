@@ -22,7 +22,7 @@ function GeneralInformation() {
 
     const renderEditMode = () => (
         <div>
-            <h1>General Information</h1>
+            <h3>General Information</h3>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="name">Name</label>
@@ -64,7 +64,7 @@ function GeneralInformation() {
 
     const renderViewMode = () => (
         <div>
-            <h1>General Information</h1>
+            <h2>General Information</h2>
             <div>
                 <p>Name</p>
                 <p>{formData.name}</p>
@@ -83,7 +83,7 @@ function GeneralInformation() {
         </div>
     );
 
-    return <div>{isEditing ? renderEditMode() : renderViewMode()}</div>;
+    return <>{isEditing ? renderEditMode() : renderViewMode()}</>;
 }
 
 export default GeneralInformation;

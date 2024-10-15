@@ -78,7 +78,7 @@ function PracticalExperience() {
     // render the form for adding a new practical experience entry
     const renderAddForm = () => (
         <div>
-            <h2>Add Practical Experience</h2>
+            <h3>Add Practical Experience</h3>
             <form onSubmit={handleFormSubmit}>
                 <div>
                     <label htmlFor="companyName">Company Name</label>
@@ -258,7 +258,7 @@ function PracticalExperience() {
 
     return (
         <div>
-            <h1>Practical Experience</h1>
+            <h2>Practical Experience</h2>
             {isAdding ? (
                 renderAddForm()
             ) : (

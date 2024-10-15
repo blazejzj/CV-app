@@ -75,7 +75,7 @@ function EducationExperience() {
     // render the form for adding a new education entry
     const renderAddForm = () => (
         <div>
-            <h2>Add Education</h2>
+            <h3>Add Education</h3>
             <form onSubmit={handleFormSubmit}>
                 <div>
                     <label htmlFor="schoolName">School Name</label>
@@ -223,7 +223,7 @@ function EducationExperience() {
 
     return (
         <div>
-            <h1>Education Experience</h1>
+            <h2>Education Experience</h2>
             {isAdding ? (
                 renderAddForm()
             ) : (
