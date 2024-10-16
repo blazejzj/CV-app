@@ -151,7 +151,7 @@ function PracticalExperience() {
         <div>
             {practicalExperienceList.map((entry) =>
                 entry.isEditing ? (
-                    // Render the edit form within the entry
+                    // render the edit form within the entry
                     <div key={entry.id}>
                         <form
                             onSubmit={(e) => handleEditFormSubmit(e, entry.id)}
@@ -232,7 +232,6 @@ function PracticalExperience() {
                                 />
                             </div>
                             <button type="submit">Save</button>
-                            {/* Removed the Cancel button here */}
                         </form>
                     </div>
                 ) : (
