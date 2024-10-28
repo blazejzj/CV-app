@@ -257,7 +257,7 @@ function PracticalExperience() {
     );
 
     return (
-        <div>
+        <div className="card-bg-color  section expand-section">
             <h1>Practical Experience</h1>
             {isAdding ? (
                 renderAddForm()

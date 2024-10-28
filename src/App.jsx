@@ -6,14 +6,20 @@ import PracticalExperience from "./components/PracticalExperience";
 
 function App() {
     return (
-        <>
-            <div className="app__userInput">
-                <GeneralInformation />
-                <EducationExperience />
-                <PracticalExperience />
+        <div className="app">
+            <div className="app__userInput__box">
+                <div className="app__userInput">
+                    <GeneralInformation />
+                    <EducationExperience />
+                    <PracticalExperience />
+                </div>
             </div>
-            <div className="app__userOutput"></div>
-        </>
+            <div className="app__userOutput">
+                <div className="app__userOutput__box">
+                    <h1>Hello</h1>
+                </div>
+            </div>
+        </div>
     );
 }
 

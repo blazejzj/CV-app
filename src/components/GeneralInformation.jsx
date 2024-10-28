@@ -63,7 +63,7 @@ function GeneralInformation() {
     );
 
     const renderViewMode = () => (
-        <div>
+        <div className="card-bg-color">
             <h1>General Information</h1>
             <div>
                 <p>Name</p>
@@ -83,7 +83,7 @@ function GeneralInformation() {
         </div>
     );
 
-    return <div>{isEditing ? renderEditMode() : renderViewMode()}</div>;
+    return <>{isEditing ? renderEditMode() : renderViewMode()}</>;
 }
 
 export default GeneralInformation;

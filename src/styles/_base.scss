@@ -1,6 +1,7 @@
 @import "mixins";
+@import "_variables";
 
 html,
 body {
-    @include fullSize;
+    background-color: $main-bg-color;
 }
