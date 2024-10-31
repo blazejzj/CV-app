@@ -21,7 +21,7 @@ function GeneralInformation() {
     };
 
     const renderEditMode = () => (
-        <div>
+        <div className="general-info-standard section general-info-edit-mode card-bg-color">
             <h1>General Information</h1>
             <form onSubmit={handleSubmit}>
                 <div>
@@ -32,6 +32,7 @@ function GeneralInformation() {
                         name="name"
                         value={formData.name}
                         onChange={handleInputChange}
+                        placeholder="Enter name ..."
                         required
                     />
                 </div>
@@ -43,6 +44,7 @@ function GeneralInformation() {
                         name="email"
                         value={formData.email}
                         onChange={handleInputChange}
+                        placeholder="Enter e-mail ..."
                         required
                     />
                 </div>
@@ -54,6 +56,7 @@ function GeneralInformation() {
                         name="phoneNumber"
                         value={formData.phoneNumber}
                         onChange={handleInputChange}
+                        placeholder="Enter phone number ..."
                         required
                     />
                 </div>
@@ -63,7 +66,7 @@ function GeneralInformation() {
     );
 
     const renderViewMode = () => (
-        <div className="card-bg-color">
+        <div className="general-info-standard section card-bg-color general-info-view-mode">
             <h1>General Information</h1>
             <div>
                 <p>Name</p>

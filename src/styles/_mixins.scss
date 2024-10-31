@@ -44,6 +44,12 @@
     flex-direction: column;
 }
 
+@mixin flexColumnStartCenter {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
 @mixin flexRowCenterFlexEnd {
     display: flex;
     align-items: center;

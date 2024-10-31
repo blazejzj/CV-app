@@ -1,3 +1,6 @@
+// FONTS
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
 // OTHERS
 @import "reset";
 @import "base";
@@ -9,6 +12,8 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    display: flex;
+    justify-content: center;
 }
 
 .app {
@@ -18,17 +23,15 @@
     padding: 32px 24px;
     gap: 24px;
     width: 100%;
-    place-self: center;
 }
 
 .app__userInput__box {
-    @include flexRowCenterFlexEnd;
+    @include flexColumnStartCenter;
     @include fullSize;
     .app__userInput {
         @include flexColumn;
         width: 100%;
         gap: 5rem;
-        overflow: hidden;
     }
 }
 
@@ -52,12 +55,87 @@
 }
 
 .expand-section {
-    align-items: center;
-    border: none;
+    font-size: 1.1rem;
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: space-evenly;
+    border: none;
     padding: 24px;
     width: 100%;
+    font-weight: bold;
+    max-width: $expanding-section-max-width;
+    max-height: $expanding-section-max-height;
+    button {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+        width: 25%;
+        background-color: inherit;
+        border: none;
+        margin-bottom: 1px;
+    }
 }
 
 // COMPONENTS
+
+// GENERAL INFORMATION
+
+.general-info-standard {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 24px;
+    width: 100%;
+    max-width: $expanding-section-max-width;
+    h1 {
+        font-weight: 900;
+        font-size: 1.4rem;
+    }
+    button {
+        background-color: inherit;
+        border: none;
+        font-weight: bold;
+        font-size: 1.2rem;
+        place-self: flex-end auto;
+    }
+}
+.general-info-view-mode {
+    div {
+        @include flexColumn;
+        gap: 0.5rem;
+        :first-child {
+            font-weight: 700;
+        }
+    }
+}
+
+.general-info-edit-mode {
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        div {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+            label {
+                font-weight: 700;
+            }
+            input {
+                border: none;
+                height: 2rem;
+                background-color: $main-bg-color;
+                border-radius: 12px;
+                padding-left: 5px;
+                border: 2px solid transparent;
+                transition: border 0.25s, box-shadow 0.25s;
+            }
+            input:focus {
+                border: 2px solid #007bff;
+                box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+                outline: none;
+            }
+        }
+    }
+}

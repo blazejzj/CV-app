@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBriefcase } from "@fortawesome/free-solid-svg-icons";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 function PracticalExperience() {
     const [practicalExperienceList, setPracticalExperienceList] = useState([]);
@@ -232,7 +235,6 @@ function PracticalExperience() {
                                 />
                             </div>
                             <button type="submit">Save</button>
-                            {/* Removed the Cancel button here */}
                         </form>
                     </div>
                 ) : (
@@ -258,12 +260,13 @@ function PracticalExperience() {
 
     return (
         <div className="card-bg-color  section expand-section">
+            <FontAwesomeIcon icon={faBriefcase} size="lg" />
             <h1>Practical Experience</h1>
             {isAdding ? (
                 renderAddForm()
             ) : (
                 <button onClick={() => setIsAdding(true)}>
-                    + Add Practical Experience
+                    <FontAwesomeIcon icon={faPlus} size="lg" />
                 </button>
             )}
             {renderPracticalEntries()}

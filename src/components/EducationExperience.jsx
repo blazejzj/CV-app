@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 function EducationExperience() {
     const [educationList, setEducationList] = useState([]);
@@ -223,12 +226,13 @@ function EducationExperience() {
 
     return (
         <div className="card-bg-color  section expand-section">
+            <FontAwesomeIcon icon={faGraduationCap} size="lg" />
             <h1>Education Experience</h1>
             {isAdding ? (
                 renderAddForm()
             ) : (
                 <button onClick={() => setIsAdding(true)}>
-                    + Add Education
+                    <FontAwesomeIcon icon={faPlus} size="lg" />
                 </button>
             )}
             {renderEducationEntries()}
