@@ -2,6 +2,8 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGraduationCap } from "@fortawesome/free-solid-svg-icons";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 function EducationExperience() {
     const [educationList, setEducationList] = useState([]);
@@ -77,7 +79,7 @@ function EducationExperience() {
 
     // render the form for adding a new education entry
     const renderAddForm = () => (
-        <div>
+        <div className="card-bg-color section form-section">
             <h2>Add Education</h2>
             <form onSubmit={handleFormSubmit}>
                 <div>
@@ -88,6 +90,7 @@ function EducationExperience() {
                         name="schoolName"
                         value={formData.schoolName}
                         onChange={handleInputChange}
+                        placeholder="Enter School Name ..."
                         required
                     />
                 </div>
@@ -99,6 +102,7 @@ function EducationExperience() {
                         name="titleOfStudy"
                         value={formData.titleOfStudy}
                         onChange={handleInputChange}
+                        placeholder="Enter Study Title ..."
                         required
                     />
                 </div>
@@ -110,6 +114,7 @@ function EducationExperience() {
                         name="startDateOfStudy"
                         value={formData.startDateOfStudy}
                         onChange={handleInputChange}
+                        placeholder="Enter Start Date ..."
                         required
                     />
                 </div>
@@ -121,22 +126,24 @@ function EducationExperience() {
                         name="endDateOfStudy"
                         value={formData.endDateOfStudy}
                         onChange={handleInputChange}
+                        placeholder="Enter End Date ..."
                     />
                 </div>
-                <button type="submit">Add</button>
-                <button type="button" onClick={() => setIsAdding(false)}>
-                    Cancel
-                </button>
+                <div className="form-buttons">
+                    <button type="submit">Add</button>
+                    <button type="button" onClick={() => setIsAdding(false)}>
+                        Cancel
+                    </button>
+                </div>
             </form>
         </div>
     );
 
     // render the list of education entries
     const renderEducationEntries = () => (
-        <div>
+        <div className="addedEntriesContainer">
             {educationList.map((entry) =>
                 entry.isEditing ? (
-                    // Render the edit form within the entry
                     <div key={entry.id}>
                         <form
                             onSubmit={(e) => handleEditFormSubmit(e, entry.id)}
@@ -205,36 +212,41 @@ function EducationExperience() {
                     </div>
                 ) : (
                     // Render the entry in view mode
-                    <div key={entry.id}>
+                    <div
+                        key={entry.id}
+                        className="addedEntriesViewMode section card-bg-color"
+                    >
                         <h3>{entry.schoolName}</h3>
-                        <p>{entry.titleOfStudy}</p>
-                        <p>
-                            {entry.startDateOfStudy} -{" "}
-                            {entry.endDateOfStudy || "Present"}
-                        </p>
-                        <button onClick={() => handleEditEntry(entry.id)}>
-                            Edit
-                        </button>
-                        <button onClick={() => handleDeleteEntry(entry.id)}>
-                            Delete
-                        </button>
+                        <div className="viewModeButtons">
+                            <button onClick={() => handleEditEntry(entry.id)}>
+                                <FontAwesomeIcon
+                                    icon={faPenToSquare}
+                                    size="lg"
+                                />
+                            </button>
+                            <button onClick={() => handleDeleteEntry(entry.id)}>
+                                <FontAwesomeIcon icon={faTrash} size="lg" />
+                            </button>
+                        </div>
                     </div>
                 )
             )}
         </div>
     );
 
-    return (
-        <div className="card-bg-color  section expand-section">
+    const renderViewMode = () => (
+        <div className="card-bg-color section expand-section">
             <FontAwesomeIcon icon={faGraduationCap} size="lg" />
             <h1>Education Experience</h1>
-            {isAdding ? (
-                renderAddForm()
-            ) : (
-                <button onClick={() => setIsAdding(true)}>
-                    <FontAwesomeIcon icon={faPlus} size="lg" />
-                </button>
-            )}
+            <button onClick={() => setIsAdding(true)}>
+                <FontAwesomeIcon icon={faPlus} size="lg" />
+            </button>
+        </div>
+    );
+
+    return (
+        <div className="educationExperienceContainer">
+            {isAdding ? renderAddForm() : renderViewMode()}
             {renderEducationEntries()}
         </div>
     );

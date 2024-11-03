@@ -2,6 +2,8 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBriefcase } from "@fortawesome/free-solid-svg-icons";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 function PracticalExperience() {
     const [practicalExperienceList, setPracticalExperienceList] = useState([]);
@@ -80,7 +82,7 @@ function PracticalExperience() {
 
     // render the form for adding a new practical experience entry
     const renderAddForm = () => (
-        <div>
+        <div className="card-bg-color section form-section">
             <h2>Add Practical Experience</h2>
             <form onSubmit={handleFormSubmit}>
                 <div>
@@ -92,7 +94,7 @@ function PracticalExperience() {
                         value={formData.companyName}
                         onChange={handleInputChange}
                         required
-                        placeholder="e.g., ABC Corp"
+                        placeholder="Enter Company Name ..."
                     />
                 </div>
                 <div>
@@ -104,7 +106,7 @@ function PracticalExperience() {
                         value={formData.positionTitle}
                         onChange={handleInputChange}
                         required
-                        placeholder="e.g., Software Engineer"
+                        placeholder="Enter Position Title ..."
                     />
                 </div>
                 <div>
@@ -117,7 +119,7 @@ function PracticalExperience() {
                         value={formData.mainResponsibilities}
                         onChange={handleInputChange}
                         required
-                        placeholder="Describe your main tasks"
+                        placeholder="Describe your main tasks ..."
                     ></textarea>
                 </div>
                 <div>
@@ -128,6 +130,7 @@ function PracticalExperience() {
                         name="startDate"
                         value={formData.startDate}
                         onChange={handleInputChange}
+                        placeholder="Enter Start Date ..."
                         required
                     />
                 </div>
@@ -139,22 +142,24 @@ function PracticalExperience() {
                         name="endDate"
                         value={formData.endDate}
                         onChange={handleInputChange}
+                        placeholder="Enter End Date ..."
                     />
                 </div>
-                <button type="submit">Add</button>
-                <button type="button" onClick={() => setIsAdding(false)}>
-                    Cancel
-                </button>
+                <div className="form-buttons">
+                    <button type="submit">Add</button>
+                    <button type="button" onClick={() => setIsAdding(false)}>
+                        Cancel
+                    </button>
+                </div>
             </form>
         </div>
     );
 
     // render the list of practical experience entries
     const renderPracticalEntries = () => (
-        <div>
+        <div className="addedEntriesContainer">
             {practicalExperienceList.map((entry) =>
                 entry.isEditing ? (
-                    // Render the edit form within the entry
                     <div key={entry.id}>
                         <form
                             onSubmit={(e) => handleEditFormSubmit(e, entry.id)}
@@ -239,36 +244,41 @@ function PracticalExperience() {
                     </div>
                 ) : (
                     // Render the entry in view mode
-                    <div key={entry.id}>
+                    <div
+                        key={entry.id}
+                        className="addedEntriesViewMode section card-bg-color"
+                    >
                         <h3>{entry.companyName}</h3>
-                        <p>{entry.positionTitle}</p>
-                        <p>{entry.mainResponsibilities}</p>
-                        <p>
-                            {entry.startDate} - {entry.endDate || "Present"}
-                        </p>
-                        <button onClick={() => handleEditEntry(entry.id)}>
-                            Edit
-                        </button>
-                        <button onClick={() => handleDeleteEntry(entry.id)}>
-                            Delete
-                        </button>
+                        <div className="viewModeButtons">
+                            <button onClick={() => handleEditEntry(entry.id)}>
+                                <FontAwesomeIcon
+                                    icon={faPenToSquare}
+                                    size="lg"
+                                />
+                            </button>
+                            <button onClick={() => handleDeleteEntry(entry.id)}>
+                                <FontAwesomeIcon icon={faTrash} size="lg" />
+                            </button>
+                        </div>
                     </div>
                 )
             )}
         </div>
     );
 
-    return (
-        <div className="card-bg-color  section expand-section">
+    const renderViewMode = () => (
+        <div className="card-bg-color section expand-section">
             <FontAwesomeIcon icon={faBriefcase} size="lg" />
             <h1>Practical Experience</h1>
-            {isAdding ? (
-                renderAddForm()
-            ) : (
-                <button onClick={() => setIsAdding(true)}>
-                    <FontAwesomeIcon icon={faPlus} size="lg" />
-                </button>
-            )}
+            <button onClick={() => setIsAdding(true)}>
+                <FontAwesomeIcon icon={faPlus} size="lg" />
+            </button>
+        </div>
+    );
+
+    return (
+        <div className="practicalExperienceContainer">
+            {isAdding ? renderAddForm() : renderViewMode()}
             {renderPracticalEntries()}
         </div>
     );
