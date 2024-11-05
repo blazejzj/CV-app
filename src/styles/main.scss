@@ -6,30 +6,34 @@
 @import "base";
 @import "mixins";
 @import "variables";
+@import "components/GeneralInformation.scss";
+@import "components/EducationExperience.scss";
+@import "components/PracticalExperience.scss";
+@import "components/CVPreview.scss";
+@import "components/AddedEntries.scss";
 
 // MAIN / ROOT
 #root {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
+    @include flex(column, center, center);
 }
 
 .app {
     display: grid;
     grid-template-columns: 25% 75%;
-    max-width: 1500px;
+    max-width: $page-max-width;
+    width: 100%;
     padding: 32px 24px;
     gap: 24px;
-    width: 100%;
 }
 
 .app__userInput__box {
-    @include flexColumnStartCenter;
+    @include flex(column, flex-start, flex-start);
     @include fullSize;
     .app__userInput {
-        @include flexColumn;
+        @include flex(column, flex-start, stretch);
         width: 100%;
         gap: 3rem;
     }
@@ -41,7 +45,6 @@
     height: $cv-preview-height;
     width: $cv-preview-width;
     .app__userOutput__box {
-        background-color: $preview-bg-color;
         @include fullSize;
     }
 }
@@ -52,194 +55,28 @@
     background-color: $card-bg-color;
 }
 
+.preview-bg-color {
+    background-color: $preview-bg-color;
+}
+
 .section {
     border-radius: 12px;
 }
 
 .expand-section {
+    @include flex(row, space-evenly, center);
     font-size: 1.1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+    font-weight: bold;
     border: none;
     padding: 24px;
     width: 100%;
-    font-weight: bold;
     max-width: $expanding-section-max-width;
     max-height: $expanding-section-max-height;
     button {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-end;
+        @include flex(row, flex-end, center);
         width: 25%;
         background-color: inherit;
         border: none;
         margin-bottom: 1px;
     }
-}
-
-// COMPONENTS
-
-// GENERAL INFORMATION
-
-.general-info-standard {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    padding: 24px;
-    width: 100%;
-    max-width: $expanding-section-max-width;
-    h1 {
-        font-weight: 900;
-        font-size: 1.4rem;
-    }
-    button {
-        background-color: inherit;
-        border: none;
-        font-weight: bold;
-        font-size: 1.2rem;
-        place-self: flex-end auto;
-    }
-}
-.general-info-view-mode {
-    div {
-        @include flexColumn;
-        gap: 0.5rem;
-        :first-child {
-            font-weight: 700;
-        }
-    }
-}
-
-.general-info-edit-mode {
-    form {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        div {
-            display: flex;
-            flex-direction: column;
-            gap: 0.2rem;
-            label {
-                font-weight: 700;
-            }
-            input {
-                border: none;
-                height: 2rem;
-                background-color: $main-bg-color;
-                border-radius: 12px;
-                padding-left: 5px;
-                border: 2px solid transparent;
-                transition: border 0.25s, box-shadow 0.25s;
-            }
-            input:focus {
-                border: 2px solid #007bff;
-                box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-                outline: none;
-            }
-        }
-    }
-}
-
-// EDUCATION EXPERIENCE
-
-.form-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 1rem;
-    padding: 24px;
-    h2 {
-        font-size: 1.2rem;
-        font-weight: bold;
-    }
-    form {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-        > div {
-            display: flex;
-            flex-direction: column;
-            gap: 0.2rem;
-            label {
-                font-weight: 700;
-            }
-            input {
-                border: none;
-                height: 2rem;
-                background-color: $main-bg-color;
-                border-radius: 12px;
-                padding-left: 5px;
-                border: 2px solid transparent;
-                transition: border 0.25s, box-shadow 0.25s;
-            }
-            input:focus {
-                border: 2px solid #007bff;
-                box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-                outline: none;
-            }
-            textarea {
-                background-color: $main-bg-color;
-                resize: none;
-                border: none;
-                border-radius: 12px;
-                padding-left: 5px;
-                border: 2px solid transparent;
-                transition: border 0.25s, box-shadow 0.25s;
-                padding-top: 5px;
-                height: 6rem;
-            }
-            textarea:focus {
-                border: 2px solid #007bff;
-                box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-                outline: none;
-            }
-        }
-        .form-buttons {
-            display: flex;
-            flex-direction: row;
-            gap: 0.5rem;
-            button {
-                background-color: inherit;
-                border: none;
-                font-weight: bold;
-                font-size: 1.2rem;
-            }
-            place-self: flex-end auto;
-        }
-    }
-}
-
-.addedEntriesContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-}
-.addedEntriesViewMode {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 24px;
-    max-width: $expanding-section-max-width - 50;
-    max-height: $expanding-section-max-height;
-    h3 {
-        font-size: 0.9rem;
-    }
-    .viewModeButtons {
-        display: flex;
-        flex-direction: row;
-        button {
-            background-color: inherit;
-            border: none;
-            font-weight: bold;
-        }
-    }
-}
-
-.educationExperienceContainer,
-.practicalExperienceContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
 }

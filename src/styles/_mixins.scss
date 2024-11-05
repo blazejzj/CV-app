@@ -1,59 +1,14 @@
-@mixin flexRowCenter {
+@mixin flex($direction: row, $justify: center, $align: center) {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
 }
 
-@mixin flexRowBottom {
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-}
-
-@mixin flexRowStartCenter {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-@mixin flexRowSpaceAround {
-    display: flex;
-    justify-content: space-around;
-}
-
-@mixin flexColumnCenter {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-@mixin flexColumnSpaceAround {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-
-@mixin flexColumnSpaceEvenly {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-@mixin flexColumn {
-    display: flex;
-    flex-direction: column;
-}
-
-@mixin flexColumnStartCenter {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-@mixin flexRowCenterFlexEnd {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+@mixin inputFocus {
+    border: 2px solid #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
 }
 
 @mixin gridPlaceItemsCenter {
