@@ -45,16 +45,9 @@ label {
 
 // COMMON CLASSES
 
-.card-bg-color {
-    background-color: $card-bg-color;
-}
-
-.preview-bg-color {
-    background-color: $preview-bg-color;
-}
-
 .section {
     border-radius: 12px;
+    background-color: $card-bg-color;
 }
 
 .expand-section {

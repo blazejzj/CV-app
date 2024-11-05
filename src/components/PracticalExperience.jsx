@@ -82,7 +82,7 @@ function PracticalExperience() {
 
     // render the form for adding a new practical experience entry
     const renderAddForm = () => (
-        <div className="card-bg-color section form-section">
+        <div className="card-bg-color form-section">
             <h2>Add Practical Experience</h2>
             <form onSubmit={handleFormSubmit}>
                 <div>

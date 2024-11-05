@@ -79,7 +79,7 @@ function EducationExperience() {
 
     // render the form for adding a new education entry
     const renderAddForm = () => (
-        <div className="card-bg-color section form-section">
+        <div className="card-bg-color form-section">
             <h2>Add Education</h2>
             <form onSubmit={handleFormSubmit}>
                 <div>
@@ -235,7 +235,7 @@ function EducationExperience() {
     );
 
     const renderViewMode = () => (
-        <div className="card-bg-color section expand-section">
+        <div className="card-bg-color expand-section">
             <FontAwesomeIcon icon={faGraduationCap} size="lg" />
             <h1>Education Experience</h1>
             <button onClick={() => setIsAdding(true)}>
