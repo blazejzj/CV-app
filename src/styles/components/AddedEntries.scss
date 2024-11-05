@@ -7,11 +7,11 @@
 }
 .addedEntriesViewMode {
     @include flex(row, space-between, center);
-    padding: 12px 24px;
     max-width: $expanding-section-max-width - 50;
     max-height: $expanding-section-max-height;
+    padding: 12px 24px;
     h3 {
-        font-size: 0.9rem;
+        font-size: $font-size-medium-responsive;
     }
     .viewModeButtons {
         @include flex(row, flex-start, stretch);

@@ -40,6 +40,10 @@ h2 {
     font-weight: 800;
 }
 
+label {
+    font-weight: 700;
+}
+
 // COMMON CLASSES
 
 .card-bg-color {
@@ -56,8 +60,7 @@ h2 {
 
 .expand-section {
     @include flex(row, space-evenly, center);
-    font-size: 1.1rem;
-    font-weight: bold;
+    font-size: $font-size-normal-large-responsive;
     border: none;
     padding: 24px;
     width: 100%;

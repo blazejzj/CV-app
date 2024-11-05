@@ -11,16 +11,6 @@
     outline: none;
 }
 
-@mixin gridPlaceItemsCenter {
-    display: grid;
-    place-items: center;
-}
-
-@mixin gridPlaceItemsSpaceBetween {
-    display: grid;
-    justify-content: space-between;
-}
-
 @mixin fullSize {
     height: 100%;
     width: 100%;
