@@ -1,3 +1,6 @@
+@import "../mixins";
+@import "../variables";
+
 .addedEntriesContainer {
     @include flex(column, flex-start, stretch);
     gap: 0.2rem;
@@ -12,11 +15,6 @@
     }
     .viewModeButtons {
         @include flex(row, flex-start, stretch);
-        button {
-            background-color: inherit;
-            border: none;
-            font-weight: bold;
-        }
     }
 }
 

@@ -11,6 +11,7 @@
 @import "components/PracticalExperience.scss";
 @import "components/CVPreview.scss";
 @import "components/AddedEntries.scss";
+@import "components/App.scss";
 
 // MAIN / ROOT
 #root {
@@ -20,33 +21,23 @@
     @include flex(column, center, center);
 }
 
-.app {
-    display: grid;
-    grid-template-columns: 25% 75%;
-    max-width: $page-max-width;
-    width: 100%;
-    padding: 32px 24px;
-    gap: 24px;
+// DEFAULT STYLINGS
+
+button {
+    background-color: inherit;
+    font-weight: bold;
+    border: none;
 }
 
-.app__userInput__box {
-    @include flex(column, flex-start, flex-start);
-    @include fullSize;
-    .app__userInput {
-        @include flex(column, flex-start, stretch);
-        width: 100%;
-        gap: 3rem;
-    }
+input,
+textarea {
+    border: none;
+    background-color: $main-bg-color;
 }
 
-.app__userOutput {
-    box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.1),
-        0 8px 16px -8px rgba(0, 0, 0, 0.25);
-    height: $cv-preview-height;
-    width: $cv-preview-width;
-    .app__userOutput__box {
-        @include fullSize;
-    }
+h1,
+h2 {
+    font-weight: 800;
 }
 
 // COMMON CLASSES
@@ -75,8 +66,5 @@
     button {
         @include flex(row, flex-end, center);
         width: 25%;
-        background-color: inherit;
-        border: none;
-        margin-bottom: 1px;
     }
 }
