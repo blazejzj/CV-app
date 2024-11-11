@@ -17,11 +17,11 @@ function GeneralInformation() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setIsEditing(false); // upon submission set editing to false
+        setIsEditing(false);
     };
 
     const renderEditMode = () => (
-        <div className="general-info-standard general-info-edit-mode card-bg-color">
+        <div className="general-info-standard general-info-edit-mode section">
             <h1>General Information</h1>
             <form onSubmit={handleSubmit}>
                 <div>
@@ -66,7 +66,7 @@ function GeneralInformation() {
     );
 
     const renderViewMode = () => (
-        <div className="general-info-standard card-bg-color general-info-view-mode">
+        <div className="general-info-standard section general-info-view-mode">
             <h1>General Information</h1>
             <div>
                 <p>Name</p>

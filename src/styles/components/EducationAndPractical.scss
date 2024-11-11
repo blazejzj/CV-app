@@ -1,7 +1,8 @@
 @import "../mixins";
 @import "../variables";
 
-.form-section {
+.form-section,
+.entryEditing {
     @include flex(column, center, stretch);
     gap: 1rem;
     padding: 24px;
@@ -17,12 +18,13 @@
             input {
                 height: 2rem;
                 @include inputTextAreaBorderTransition;
+                padding: 1rem 0.5rem;
             }
             textarea {
                 resize: none;
-                padding-left: 5px;
                 height: 6rem;
                 @include inputTextAreaBorderTransition;
+                padding: 0.5rem;
             }
             textarea:focus,
             input:focus {
@@ -37,5 +39,30 @@
             }
             place-self: flex-end auto;
         }
+        button {
+            place-self: flex-end;
+            font-size: $font-size-large-responsive;
+        }
     }
+}
+
+.viewModeContainerIcon {
+    @include flex(row-reverse, flex-start, center);
+    gap: 0.3rem;
+}
+
+.expand-section {
+    @include flex(row, space-between, center);
+    font-size: $font-size-medium-responsive;
+    border: none;
+    padding: 1.5rem 1rem;
+    width: 100%;
+    max-width: $expanding-section-max-width;
+    max-height: $expanding-section-max-height;
+}
+
+.educationExperienceContainer,
+.practicalExperienceContainer {
+    @include flex(column, flex-start, stretch);
+    gap: 0.2rem;
 }

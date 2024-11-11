@@ -2,7 +2,7 @@ import "./styles/main.scss";
 import GeneralInformation from "./components/GeneralInformation";
 import EducationExperience from "./components/EducationExperience";
 import PracticalExperience from "./components/PracticalExperience";
-// import CVPreview from './components/CVPreview'
+import CVPreview from "./components/CVPreview";
 
 function App() {
     return (
@@ -15,9 +15,7 @@ function App() {
                 </div>
             </div>
             <div className="app__userOutput">
-                <div className="app__userOutput__box">
-                    <h1>Hello</h1>
-                </div>
+                <CVPreview />
             </div>
         </div>
     );

@@ -1,0 +1,28 @@
+@import "../variables";
+.resume {
+    display: grid;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+    position: sticky;
+    top: 0;
+    width: 100%;
+}
+
+.top {
+    grid-template-rows: auto 1fr;
+}
+
+.personalInformation {
+    width: 100%;
+    padding: 36px 24px;
+    color: #fff;
+    background-color: #0e374e;
+    h1 {
+        font-weight: 700;
+        font-size: $font-size-extra-large-responsive;
+    }
+}
+
+.personalName {
+    text-align: center;
+}

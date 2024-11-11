@@ -26,6 +26,7 @@ button {
     background-color: inherit;
     font-weight: bold;
     border: none;
+    cursor: pointer;
 }
 
 input,
@@ -48,18 +49,4 @@ label {
 .section {
     border-radius: 12px;
     background-color: $card-bg-color;
-}
-
-.expand-section {
-    @include flex(row, space-evenly, center);
-    font-size: $font-size-normal-large-responsive;
-    border: none;
-    padding: 24px;
-    width: 100%;
-    max-width: $expanding-section-max-width;
-    max-height: $expanding-section-max-height;
-    button {
-        @include flex(row, flex-end, center);
-        width: 25%;
-    }
 }

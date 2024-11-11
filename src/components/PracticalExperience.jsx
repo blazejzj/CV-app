@@ -82,7 +82,7 @@ function PracticalExperience() {
 
     // render the form for adding a new practical experience entry
     const renderAddForm = () => (
-        <div className="card-bg-color form-section">
+        <div className="section form-section">
             <h2>Add Practical Experience</h2>
             <form onSubmit={handleFormSubmit}>
                 <div>
@@ -160,7 +160,7 @@ function PracticalExperience() {
         <div className="addedEntriesContainer">
             {practicalExperienceList.map((entry) =>
                 entry.isEditing ? (
-                    <div key={entry.id}>
+                    <div key={entry.id} className="entryEditing section">
                         <form
                             onSubmit={(e) => handleEditFormSubmit(e, entry.id)}
                         >
@@ -243,10 +243,9 @@ function PracticalExperience() {
                         </form>
                     </div>
                 ) : (
-                    // Render the entry in view mode
                     <div
                         key={entry.id}
-                        className="addedEntriesViewMode section card-bg-color"
+                        className="addedEntriesViewMode section"
                     >
                         <h3>{entry.companyName}</h3>
                         <div className="viewModeButtons">
@@ -268,8 +267,10 @@ function PracticalExperience() {
 
     const renderViewMode = () => (
         <div className="card-bg-color section expand-section">
-            <FontAwesomeIcon icon={faBriefcase} size="lg" />
-            <h1>Practical Experience</h1>
+            <div className="viewModeContainerIcon">
+                <h1>Practical Experience</h1>
+                <FontAwesomeIcon icon={faBriefcase} size="lg" />
+            </div>
             <button onClick={() => setIsAdding(true)}>
                 <FontAwesomeIcon icon={faPlus} size="lg" />
             </button>
