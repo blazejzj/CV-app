@@ -76,7 +76,6 @@ function GeneralInformation() {
                         value={formData.linkedin}
                         onChange={handleInputChange}
                         placeholder="Optional: linkedin.com/in/johndoe"
-                        required
                     />
                 </div>
                 <button type="submit">Save</button>
