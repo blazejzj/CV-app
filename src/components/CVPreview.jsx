@@ -1,6 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { generalInformationData } from "./GeneralInformation";
-import { faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons";
+import { generalInformationData } from "./data/GeneralInformationData";
+import {
+    faPhone,
+    faEnvelope,
+    faLinkedin,
+} from "@fortawesome/free-solid-svg-icons";
 
 function CVPreview() {
     return (
@@ -16,6 +20,12 @@ function CVPreview() {
                         <FontAwesomeIcon icon={faEnvelope} size="xs" />
                         <p>{generalInformationData.email}</p>
                     </div>
+                    {generalInformationData.linkedin && (
+                        <div>
+                            <FontAwesomeIcon icon={faLinkedin} size="xs" />
+                            <p>{generalInformationData.linkedin}</p>
+                        </div>
+                    )}
                 </div>
             </div>
             <div className="CVDisplay">

@@ -1,13 +1,5 @@
 import { useState } from "react";
-
-// define an object with data
-export const generalInformationData = {
-    name: "John Doe",
-    email: "johndoe@react.com",
-    phoneNumber: "+47 123 456 78",
-    github: "",
-    linkedin: "",
-};
+import { generalInformationData } from "./data/GeneralInformationData.js";
 
 function GeneralInformation() {
     const [formData, setFormData] = useState(generalInformationData);
@@ -70,7 +62,7 @@ function GeneralInformation() {
                         type="text"
                         id="gitHub"
                         name="github"
-                        value={formData.gitHub}
+                        value={formData.github}
                         onChange={handleInputChange}
                         placeholder="Optional: github.com/johndoe"
                     />
@@ -81,9 +73,9 @@ function GeneralInformation() {
                         type="text"
                         id="linkedIn"
                         name="linkedIn"
-                        value={formData.linkedIn}
+                        value={formData.linkedin}
                         onChange={handleInputChange}
-                        placeholder="linkedin.com/in/johndoe"
+                        placeholder="Optional: linkedin.com/in/johndoe"
                         required
                     />
                 </div>
