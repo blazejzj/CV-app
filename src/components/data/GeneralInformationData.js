@@ -4,5 +4,5 @@ export const generalInformationData = {
     email: "johndoe@react.com",
     phoneNumber: "+47 123 456 78",
     github: "",
-    linkedin: "",
+    linkedin: "maricn",
 };
