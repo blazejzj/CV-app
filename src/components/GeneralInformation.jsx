@@ -5,6 +5,8 @@ export const generalInformationData = {
     name: "John Doe",
     email: "johndoe@react.com",
     phoneNumber: "+47 123 456 78",
+    github: "",
+    linkedin: "",
 };
 
 function GeneralInformation() {
@@ -59,6 +61,29 @@ function GeneralInformation() {
                         value={formData.phoneNumber}
                         onChange={handleInputChange}
                         placeholder="Enter phone number ..."
+                        required
+                    />
+                </div>
+                <div>
+                    <label htmlFor="gitHub">GitHub</label>
+                    <input
+                        type="text"
+                        id="gitHub"
+                        name="github"
+                        value={formData.gitHub}
+                        onChange={handleInputChange}
+                        placeholder="Optional: github.com/johndoe"
+                    />
+                </div>
+                <div>
+                    <label htmlFor="phoneNumber">LinkedIn</label>
+                    <input
+                        type="text"
+                        id="linkedIn"
+                        name="linkedIn"
+                        value={formData.linkedIn}
+                        onChange={handleInputChange}
+                        placeholder="linkedin.com/in/johndoe"
                         required
                     />
                 </div>

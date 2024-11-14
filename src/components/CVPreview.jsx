@@ -1,17 +1,20 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { generalInformationData } from "./GeneralInformation";
-import { faPhone } from "@fortawesome/free-solid-svg-icons";
+import { faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 function CVPreview() {
     return (
         <div className="resume top">
             <div className="personalInformation">
-                <h1 className="personalName">Python Javalin</h1>
+                <h1 className="personalName">{generalInformationData.name}</h1>
                 <div className="personalDetails">
                     <div>
-                        <p>123456789</p>
+                        <FontAwesomeIcon icon={faPhone} size="xs" />
+                        <p>{generalInformationData.phoneNumber}</p>
                     </div>
                     <div>
-                        <p>omg@gmail.com</p>
+                        <FontAwesomeIcon icon={faEnvelope} size="xs" />
+                        <p>{generalInformationData.email}</p>
                     </div>
                 </div>
             </div>
