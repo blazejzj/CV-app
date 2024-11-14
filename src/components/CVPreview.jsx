@@ -1,3 +1,6 @@
+import { generalInformationData } from "./GeneralInformation";
+import { faPhone } from "@fortawesome/free-solid-svg-icons";
+
 function CVPreview() {
     return (
         <div className="resume top">

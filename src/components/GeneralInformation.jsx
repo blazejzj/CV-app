@@ -1,12 +1,14 @@
 import { useState } from "react";
 
+// define an object with data
+export const generalInformationData = {
+    name: "John Doe",
+    email: "johndoe@react.com",
+    phoneNumber: "+47 123 456 78",
+};
+
 function GeneralInformation() {
-    // default values for the form
-    const [formData, setFormData] = useState({
-        name: "John Doe",
-        email: "johndoe@react.com",
-        phoneNumber: "+47 123 456 78",
-    });
+    const [formData, setFormData] = useState(generalInformationData);
 
     const [isEditing, setIsEditing] = useState(false);
 
