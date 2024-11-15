@@ -13,6 +13,9 @@
 }
 
 .personalInformation {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     width: 100%;
     padding: 36px 24px;
     color: #fff;
@@ -20,9 +23,17 @@
     h1 {
         font-weight: 700;
         font-size: $font-size-extra-large-responsive;
+        text-align: center;
     }
-}
-
-.personalName {
-    text-align: center;
+    .personalDetails {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        justify-content: center;
+        > div {
+            display: flex;
+            flex-direction: row;
+            gap: 0.2rem;
+        }
+    }
 }
