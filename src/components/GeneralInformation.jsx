@@ -57,6 +57,17 @@ function GeneralInformation() {
                     />
                 </div>
                 <div>
+                    <label htmlFor="introduction">Introduction</label>
+                    <textarea
+                        type="text"
+                        id="introduction"
+                        name="introduction"
+                        value={formData.introduction}
+                        onChange={handleInputChange}
+                        placeholder="Optional: Tell something about yourself ..."
+                    />
+                </div>
+                <div>
                     <label htmlFor="gitHub">GitHub</label>
                     <input
                         type="text"

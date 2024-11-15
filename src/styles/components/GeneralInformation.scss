@@ -35,12 +35,19 @@
             input {
                 height: 2rem;
                 border-radius: 12px;
-                padding-left: 5px;
+                padding: 1rem 0.5rem;
                 border: 2px solid transparent;
                 transition: border 0.25s, box-shadow 0.25s;
             }
-            input:focus {
+            input:focus,
+            textarea:focus {
                 @include inputFocus;
+            }
+            textarea {
+                resize: none;
+                height: 6rem;
+                @include inputTextAreaBorderTransition;
+                padding: 0.5rem;
             }
         }
     }
