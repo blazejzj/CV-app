@@ -20,8 +20,9 @@
     padding: 36px 24px;
     background-color: #ffffff;
     h1 {
+        font-family: $font-CV-preview;
         font-weight: 700;
-        font-size: $font-size-extra-large-responsive;
+        font-size: $font-size-xxxl-responsive;
         text-align: center;
     }
     .personalDetails {

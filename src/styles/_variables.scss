@@ -1,3 +1,7 @@
+// FONT IMPORTS
+
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
 // COLORS
 $main-bg-color: #f3f4f6;
 $card-bg-color: #fff;
@@ -20,6 +24,10 @@ $font-size-medium-responsive: min(calc(0.25rem + 1vw), 1rem);
 $font-size-normal-responsive: min(calc(0.5rem + 1vw), 1rem);
 $font-size-large-responsive: min(calc(0.5rem + 1vw), 1.25rem);
 $font-size-normal-large-responsive: min(calc(0.5rem + 1vw), 1.125rem);
-$font-size-extra-large-responsive: min(calc(1rem + 1vw), 2.25rem);
 $font-size-xl-responsive: min(calc(0.75rem + 1vw), 1.5rem);
 $font-size-xxl-responsive: min(calc(1rem + 1vw), 2rem);
+$font-size-xxl-responsive: min(calc(1.1rem + 1vw), 2.25rem);
+$font-size-xxxl-responsive: min(calc(1.2rem + 1.1vw), 2.5rem);
+
+// FONT TYPES
+$font-CV-preview: "EB Garamond", serif;
