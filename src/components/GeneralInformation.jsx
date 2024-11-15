@@ -7,6 +7,7 @@ function GeneralInformation() {
     const [isEditing, setIsEditing] = useState(false);
 
     const handleInputChange = (e) => {
+        console.log("updated data");
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
