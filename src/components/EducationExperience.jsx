@@ -5,38 +5,31 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
-function EducationExperience() {
-    const [educationList, setEducationList] = useState([]);
-
-    const [formData, setFormData] = useState({
-        schoolName: "",
-        titleOfStudy: "",
-        startDateOfStudy: "",
-        endDateOfStudy: "",
-    });
-
+function EducationExperience({
+    educationList,
+    setEducationList,
+    educationData,
+    setEducationData,
+}) {
     const [isAdding, setIsAdding] = useState(false);
 
-    // handle input changes -> for new entry form
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
+        setEducationData({ ...educationData, [name]: value });
     };
 
-    // new education entry
     const handleFormSubmit = (e) => {
         e.preventDefault();
 
         const newEntry = {
             id: Date.now(),
-            ...formData,
+            ...educationData,
             isEditing: false,
         };
 
-        setEducationList([...educationList, newEntry]); // add the entry
+        setEducationList([...educationList, newEntry]);
 
-        // reset form after adding entry
-        setFormData({
+        setEducationData({
             schoolName: "",
             titleOfStudy: "",
             startDateOfStudy: "",
@@ -88,7 +81,7 @@ function EducationExperience() {
                         type="text"
                         id="schoolName"
                         name="schoolName"
-                        value={formData.schoolName}
+                        value={educationData.schoolName}
                         onChange={handleInputChange}
                         placeholder="Enter School Name ..."
                         required
@@ -100,9 +93,21 @@ function EducationExperience() {
                         type="text"
                         id="titleOfStudy"
                         name="titleOfStudy"
-                        value={formData.titleOfStudy}
+                        value={educationData.titleOfStudy}
                         onChange={handleInputChange}
                         placeholder="Enter Study Title ..."
+                        required
+                    />
+                </div>
+                <div>
+                    <label htmlFor="location">Location</label>
+                    <input
+                        type="text"
+                        id="location"
+                        name="location"
+                        value={educationData.location}
+                        onChange={handleInputChange}
+                        placeholder="Enter study location ..."
                         required
                     />
                 </div>
@@ -112,7 +117,7 @@ function EducationExperience() {
                         type="month"
                         id="startDateOfStudy"
                         name="startDateOfStudy"
-                        value={formData.startDateOfStudy}
+                        value={educationData.startDateOfStudy}
                         onChange={handleInputChange}
                         placeholder="Enter Start Date ..."
                         required
@@ -124,7 +129,7 @@ function EducationExperience() {
                         type="month"
                         id="endDateOfStudy"
                         name="endDateOfStudy"
-                        value={formData.endDateOfStudy}
+                        value={educationData.endDateOfStudy}
                         onChange={handleInputChange}
                         placeholder="Enter End Date ..."
                     />
@@ -172,6 +177,21 @@ function EducationExperience() {
                                     id={`titleOfStudy-${entry.id}`}
                                     name="titleOfStudy"
                                     value={entry.titleOfStudy}
+                                    onChange={(e) =>
+                                        handleEditInputChange(e, entry.id)
+                                    }
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor={`location-${entry.id}`}>
+                                    Location
+                                </label>
+                                <input
+                                    type="text"
+                                    id={`location-${entry.id}`}
+                                    name="location"
+                                    value={entry.location}
                                     onChange={(e) =>
                                         handleEditInputChange(e, entry.id)
                                     }

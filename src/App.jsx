@@ -14,22 +14,38 @@ function App() {
         github: "",
         linkedin: "",
     };
-    const [formData, setFormData] = useState(generalInformationData);
+    const [userData, setUserData] = useState(generalInformationData);
+
+    // Education Experience
+    const [educationData, setEducationData] = useState({
+        schoolName: "",
+        titleOfStudy: "",
+        location: "",
+        startDateOfStudy: "",
+        endDateOfStudy: "",
+    });
+
+    const [educationList, setEducationList] = useState([]);
 
     return (
         <div className="app">
             <div className="app__userInput__box">
                 <div className="app__userInput">
                     <GeneralInformation
-                        formData={formData}
-                        setFormData={setFormData}
+                        formData={userData}
+                        setFormData={setUserData}
                     />
-                    <EducationExperience />
+                    <EducationExperience
+                        educationList={educationList}
+                        setEducationList={setEducationList}
+                        educationData={educationData}
+                        setEducationData={setEducationData}
+                    />
                     <PracticalExperience />
                 </div>
             </div>
             <div className="app__userOutput">
-                <CVPreview formData={formData} />
+                <CVPreview userData={userData} educationList={educationList} />
             </div>
         </div>
     );
