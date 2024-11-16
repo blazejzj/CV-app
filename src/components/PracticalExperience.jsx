@@ -5,39 +5,31 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
-function PracticalExperience() {
-    const [practicalExperienceList, setPracticalExperienceList] = useState([]);
-
-    const [formData, setFormData] = useState({
-        companyName: "",
-        positionTitle: "",
-        mainResponsibilities: "",
-        startDate: "",
-        endDate: "",
-    });
-
+function PracticalExperience({
+    practicalExperienceList,
+    setPracticalExperienceList,
+    practicalData,
+    setPracticalData,
+}) {
     const [isAdding, setIsAdding] = useState(false);
 
-    // input changes for the add new entry form
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
+        setPracticalData({ ...practicalData, [name]: value });
     };
 
-    // new practical experience entry
     const handleFormSubmit = (e) => {
         e.preventDefault();
 
         const newEntry = {
             id: Date.now(),
-            ...formData,
+            ...practicalData,
             isEditing: false,
         };
 
         setPracticalExperienceList([...practicalExperienceList, newEntry]);
 
-        // Reset form
-        setFormData({
+        setPracticalData({
             companyName: "",
             positionTitle: "",
             mainResponsibilities: "",
@@ -55,7 +47,6 @@ function PracticalExperience() {
         );
     };
 
-    // handle input changes for the edit form within an entry
     const handleEditInputChange = (e, entryId) => {
         const { name, value } = e.target;
         setPracticalExperienceList((prevList) =>
@@ -80,7 +71,6 @@ function PracticalExperience() {
         );
     };
 
-    // render the form for adding a new practical experience entry
     const renderAddForm = () => (
         <div className="section form-section">
             <h2>Add Practical Experience</h2>
@@ -91,7 +81,7 @@ function PracticalExperience() {
                         type="text"
                         id="companyName"
                         name="companyName"
-                        value={formData.companyName}
+                        value={practicalData.companyName}
                         onChange={handleInputChange}
                         required
                         placeholder="Enter Company Name ..."
@@ -103,7 +93,7 @@ function PracticalExperience() {
                         type="text"
                         id="positionTitle"
                         name="positionTitle"
-                        value={formData.positionTitle}
+                        value={practicalData.positionTitle}
                         onChange={handleInputChange}
                         required
                         placeholder="Enter Position Title ..."
@@ -116,7 +106,7 @@ function PracticalExperience() {
                     <textarea
                         id="mainResponsibilities"
                         name="mainResponsibilities"
-                        value={formData.mainResponsibilities}
+                        value={practicalData.mainResponsibilities}
                         onChange={handleInputChange}
                         required
                         placeholder="Describe your main tasks ..."
@@ -128,7 +118,7 @@ function PracticalExperience() {
                         type="month"
                         id="startDate"
                         name="startDate"
-                        value={formData.startDate}
+                        value={practicalData.startDate}
                         onChange={handleInputChange}
                         placeholder="Enter Start Date ..."
                         required
@@ -140,7 +130,7 @@ function PracticalExperience() {
                         type="month"
                         id="endDate"
                         name="endDate"
-                        value={formData.endDate}
+                        value={practicalData.endDate}
                         onChange={handleInputChange}
                         placeholder="Enter End Date ..."
                     />
@@ -155,7 +145,6 @@ function PracticalExperience() {
         </div>
     );
 
-    // render the list of practical experience entries
     const renderPracticalEntries = () => (
         <div className="addedEntriesContainer">
             {practicalExperienceList.map((entry) =>

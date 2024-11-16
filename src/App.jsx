@@ -27,6 +27,17 @@ function App() {
 
     const [educationList, setEducationList] = useState([]);
 
+    // Practical Experience
+    const [practicalExperienceList, setPracticalExperienceList] = useState([]);
+
+    const [practicalData, setPracticalData] = useState({
+        companyName: "",
+        positionTitle: "",
+        mainResponsibilities: "",
+        startDate: "",
+        endDate: "",
+    });
+
     return (
         <div className="app">
             <div className="app__userInput__box">
@@ -41,7 +52,12 @@ function App() {
                         educationData={educationData}
                         setEducationData={setEducationData}
                     />
-                    <PracticalExperience />
+                    <PracticalExperience
+                        practicalData={practicalData}
+                        setPracticalData={setPracticalData}
+                        practicalExperienceList={practicalExperienceList}
+                        setPracticalExperienceList={setPracticalExperienceList}
+                    />
                 </div>
             </div>
             <div className="app__userOutput">
