@@ -1,32 +1,32 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { generalInformationData } from "./data/GeneralInformationData";
 import { faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons/faLinkedin";
 import { faGithub } from "@fortawesome/free-brands-svg-icons/faGithub";
 
-function CVPreview() {
+function CVPreview({ formData }) {
     const renderHeaderInfo = () => (
         <div className="personalInformation">
-            <h1 className="personalName">{generalInformationData.name}</h1>
+            {console.log("UPDATED VALUES!")}
+            <h1 className="personalName">{formData.name}</h1>
             <div className="personalDetails">
                 <div>
                     <FontAwesomeIcon icon={faPhone} size="lg" />
-                    <p>{generalInformationData.phoneNumber}</p>
+                    <p>{formData.phoneNumber}</p>
                 </div>
                 <div>
                     <FontAwesomeIcon icon={faEnvelope} size="lg" />
-                    <p>{generalInformationData.email}</p>
+                    <p>{formData.email}</p>
                 </div>
-                {generalInformationData.linkedin && (
+                {formData.linkedin && (
                     <div>
                         <FontAwesomeIcon icon={faLinkedin} size="lg" />
-                        <p>{generalInformationData.linkedin}</p>
+                        <p>{formData.linkedin}</p>
                     </div>
                 )}
-                {generalInformationData.github && (
+                {formData.github && (
                     <div>
                         <FontAwesomeIcon icon={faGithub} size="lg" />
-                        <p>{generalInformationData.github}</p>
+                        <p>{formData.github}</p>
                     </div>
                 )}
             </div>
@@ -37,10 +37,10 @@ function CVPreview() {
         <div className="resume top">
             {renderHeaderInfo()}
             <div className="CVDisplay">
-                {generalInformationData.introduction && (
+                {formData.introduction && (
                     <div className="introduction">
                         <h2>Introduction</h2>
-                        <p>{generalInformationData.introduction}</p>
+                        <p>{formData.introduction}</p>
                     </div>
                 )}
             </div>

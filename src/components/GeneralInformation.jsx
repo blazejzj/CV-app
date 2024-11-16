@@ -1,9 +1,6 @@
 import { useState } from "react";
-import { generalInformationData } from "./data/GeneralInformationData.js";
 
-function GeneralInformation() {
-    const [formData, setFormData] = useState(generalInformationData);
-
+function GeneralInformation({ formData, setFormData }) {
     const [isEditing, setIsEditing] = useState(false);
 
     const handleInputChange = (e) => {
