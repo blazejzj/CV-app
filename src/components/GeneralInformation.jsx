@@ -77,7 +77,7 @@ function GeneralInformation({ formData, setFormData }) {
                     />
                 </div>
                 <div>
-                    <label htmlFor="phoneNumber">LinkedIn</label>
+                    <label htmlFor="linkedIn">LinkedIn</label>
                     <input
                         type="text"
                         id="linkedIn"
