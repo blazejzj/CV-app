@@ -81,7 +81,7 @@ function GeneralInformation({ formData, setFormData }) {
                     <input
                         type="text"
                         id="linkedIn"
-                        name="linkedIn"
+                        name="linkedin"
                         value={formData.linkedin}
                         onChange={handleInputChange}
                         placeholder="Optional: linkedin.com/in/johndoe"

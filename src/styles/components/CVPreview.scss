@@ -42,14 +42,23 @@
     }
 }
 
+.previewSectionHeader {
+    font-family: $font-CV-preview;
+    font-weight: 500;
+    font-size: 1.3rem;
+    text-align: center;
+    border-bottom: 1px solid black;
+    width: 65%;
+}
+
 .CVDisplay {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0px 24px;
     .introduction {
-        h2 {
-            font-family: $font-CV-preview;
-            font-weight: 400;
-            font-size: 1.3rem;
-            text-align: center;
-        }
+        @include flex(column, space-between, center);
+        gap: 0.4rem;
         p {
             font-family: $font-CV-preview;
             font-size: 1.1rem;

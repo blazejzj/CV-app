@@ -21,6 +21,7 @@ function App() {
         schoolName: "",
         titleOfStudy: "",
         location: "",
+        relevantCourses: "",
         startDateOfStudy: "",
         endDateOfStudy: "",
     });
@@ -38,6 +39,10 @@ function App() {
         endDate: "",
     });
 
+    // TODO
+    /**
+     * cant type in linkedin in generalinformation
+     */
     return (
         <div className="app">
             <div className="app__userInput__box">
@@ -61,7 +66,11 @@ function App() {
                 </div>
             </div>
             <div className="app__userOutput">
-                <CVPreview userData={userData} educationList={educationList} />
+                <CVPreview
+                    userData={userData}
+                    educationList={educationList}
+                    practicalExperienceList={practicalExperienceList}
+                />
             </div>
         </div>
     );

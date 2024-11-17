@@ -112,6 +112,18 @@ function EducationExperience({
                     />
                 </div>
                 <div>
+                    <label htmlFor="courseWork">Relevant Coursework</label>
+                    <input
+                        type="text"
+                        id="relevantCourses"
+                        name="relevantCourses"
+                        value={educationData.relevantCourses}
+                        onChange={handleInputChange}
+                        placeholder="Enter relevant coursework ..."
+                        required
+                    />
+                </div>
+                <div>
                     <label htmlFor="startDateOfStudy">Start Date</label>
                     <input
                         type="month"
@@ -192,6 +204,21 @@ function EducationExperience({
                                     id={`location-${entry.id}`}
                                     name="location"
                                     value={entry.location}
+                                    onChange={(e) =>
+                                        handleEditInputChange(e, entry.id)
+                                    }
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor={`relevantCourses-${entry.id}`}>
+                                    Relevant Coursework
+                                </label>
+                                <input
+                                    type="text"
+                                    id={`relevantCourses-${entry.id}`}
+                                    name="relevantCourses"
+                                    value={entry.relevantCourses}
                                     onChange={(e) =>
                                         handleEditInputChange(e, entry.id)
                                     }
