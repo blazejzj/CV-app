@@ -35,17 +35,32 @@ function CVPreview({ userData, educationList }) {
 
     const renderIntroduction = () => (
         <div className="introduction">
-            <h2 className="previewSectionHeader">Introduction</h2>
+            <h2 className="sectionHeader">Introduction</h2>
             <p>{userData.introduction}</p>
         </div>
     );
 
     const renderEducationExperience = () => (
-        <div>
-            <h2 className="previewSectionHeader">Education</h2>
+        <div className="previewEducationList">
+            <h2 className="sectionHeader">Education</h2>
             {educationList.map((entry) => (
                 <div key={entry.id}>
-                    <h3>{entry.schoolName}</h3>
+                    <h2>{entry.titleOfStudy}</h2>
+                    <div className="schoolInformation">
+                        <h3>{entry.schoolName}</h3>
+                        <span>|</span>
+                        <p>{entry.location}</p>
+                    </div>
+                    <div className="educationDates">
+                        {entry.startDateOfStudy}
+                        <span>-</span>
+                        {entry.endDateOfStudy
+                            ? entry.endDateOfStudy
+                            : "Present"}
+                    </div>
+                    <div className="displayCourseWork">
+                        {entry.relevantCourses}
+                    </div>
                 </div>
             ))}
         </div>

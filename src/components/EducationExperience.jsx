@@ -120,7 +120,6 @@ function EducationExperience({
                         value={educationData.relevantCourses}
                         onChange={handleInputChange}
                         placeholder="Enter relevant coursework ..."
-                        required
                     />
                 </div>
                 <div>
@@ -222,7 +221,6 @@ function EducationExperience({
                                     onChange={(e) =>
                                         handleEditInputChange(e, entry.id)
                                     }
-                                    required
                                 />
                             </div>
                             <div>
