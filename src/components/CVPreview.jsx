@@ -1,9 +1,30 @@
+import { useRef, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons/faLinkedin";
 import { faGithub } from "@fortawesome/free-brands-svg-icons/faGithub";
 
 function CVPreview({ userData, educationList, practicalExperienceList }) {
+    const contentRef = useRef(null);
+    const [scale, setScale] = useState(1);
+
+    useEffect(() => {
+        // get height
+        const contentHeight = contentRef.current.offsetHeight;
+
+        // define max height in px
+        const maxHeightCm = 29.7;
+        const cmToPx = 37.4;
+        const maxHeightPx = maxHeightCm * cmToPx;
+
+        if (contentHeight > maxHeightPx) {
+            const scalingFactor = maxHeightPx / contentHeight;
+            setScale(scalingFactor);
+        } else {
+            setScale(1);
+        }
+    }, [userData, educationList, practicalExperienceList]);
+
     const renderHeaderInfo = () => (
         <div className="personalInformation">
             {console.log("UPDATED VALUES!")}
@@ -92,12 +113,21 @@ function CVPreview({ userData, educationList, practicalExperienceList }) {
 
     return (
         <div className="resume top">
-            {renderHeaderInfo()}
-            <div className="CVDisplay">
-                {userData.introduction && renderIntroduction()}
-                {practicalExperienceList.length > 0 &&
-                    renderPracticalExperience()}
-                {educationList.length > 0 && renderEducationExperience()}
+            <div
+                ref={contentRef}
+                style={{
+                    transform: `scale(${scale})`,
+                    transformOrigin: "top left",
+                    width: scale < 1 ? `${100 / scale}%` : "100%",
+                }}
+            >
+                {renderHeaderInfo()}
+                <div className="CVDisplay">
+                    {userData.introduction && renderIntroduction()}
+                    {practicalExperienceList.length > 0 &&
+                        renderPracticalExperience()}
+                    {educationList.length > 0 && renderEducationExperience()}
+                </div>
             </div>
         </div>
     );
