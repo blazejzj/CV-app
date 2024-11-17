@@ -3,7 +3,7 @@ import { faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons/faLinkedin";
 import { faGithub } from "@fortawesome/free-brands-svg-icons/faGithub";
 
-function CVPreview({ userData, educationList }) {
+function CVPreview({ userData, educationList, practicalExperienceList }) {
     const renderHeaderInfo = () => (
         <div className="personalInformation">
             {console.log("UPDATED VALUES!")}
@@ -51,6 +51,30 @@ function CVPreview({ userData, educationList }) {
                         <span>|</span>
                         <p>{entry.location}</p>
                     </div>
+                    <div className="practicalDates">
+                        {entry.startDate}
+                        <span>-</span>
+                        {entry.endDateOfStudy ? entry.endDate : "Present"}
+                    </div>
+                    <div className="displayResponsibilities">
+                        {entry.displayResponsibilities}
+                    </div>
+                </div>
+            ))}
+        </div>
+    );
+
+    const renderPracticalExperience = () => (
+        <div className="previewPracticalList">
+            <h2 className="sectionHeader">Experience</h2>
+            {practicalExperienceList.map((entry) => (
+                <div key={entry.id}>
+                    <h2>{entry.positionTitle}</h2>
+                    <div className="workPlaceInformation">
+                        <h3>{entry.companyName}</h3>
+                        <span>|</span>
+                        <p>{entry.location}</p>
+                    </div>
                     <div className="educationDates">
                         {entry.startDateOfStudy}
                         <span>-</span>
@@ -71,6 +95,8 @@ function CVPreview({ userData, educationList }) {
             {renderHeaderInfo()}
             <div className="CVDisplay">
                 {userData.introduction && renderIntroduction()}
+                {practicalExperienceList.length > 0 &&
+                    renderPracticalExperience()}
                 {educationList.length > 0 && renderEducationExperience()}
             </div>
         </div>

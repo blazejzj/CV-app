@@ -113,6 +113,18 @@ function PracticalExperience({
                     ></textarea>
                 </div>
                 <div>
+                    <label htmlFor="location">Location</label>
+                    <input
+                        type="text"
+                        id="location"
+                        name="location"
+                        value={practicalData.location}
+                        onChange={handleInputChange}
+                        required
+                        placeholder="Enter Location ..."
+                    />
+                </div>
+                <div>
                     <label htmlFor="startDate">Start Date</label>
                     <input
                         type="month"
@@ -177,6 +189,21 @@ function PracticalExperience({
                                     id={`positionTitle-${entry.id}`}
                                     name="positionTitle"
                                     value={entry.positionTitle}
+                                    onChange={(e) =>
+                                        handleEditInputChange(e, entry.id)
+                                    }
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor={`location-${entry.id}`}>
+                                    Location
+                                </label>
+                                <input
+                                    type="text"
+                                    id={`location-${entry.id}`}
+                                    name="location"
+                                    value={entry.location}
                                     onChange={(e) =>
                                         handleEditInputChange(e, entry.id)
                                     }

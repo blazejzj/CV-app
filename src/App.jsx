@@ -35,14 +35,11 @@ function App() {
         companyName: "",
         positionTitle: "",
         mainResponsibilities: "",
+        location: "",
         startDate: "",
         endDate: "",
     });
 
-    // TODO
-    /**
-     * cant type in linkedin in generalinformation
-     */
     return (
         <div className="app">
             <div className="app__userInput__box">
