@@ -52,12 +52,14 @@ function CVPreview({ userData, educationList, practicalExperienceList }) {
                         <p>{entry.location}</p>
                     </div>
                     <div className="entryDates">
-                        {entry.startDate}
+                        {entry.startDateOfStudy}
                         <span>-</span>
-                        {entry.endDateOfStudy ? entry.endDate : "Present"}
+                        {entry.endDateOfStudy
+                            ? entry.endDateOfStudy
+                            : "Present"}
                     </div>
                     <div className="relevancyDisplay">
-                        {entry.displayResponsibilities}
+                        {entry.relevantCourses}
                     </div>
                 </div>
             ))}
@@ -76,14 +78,12 @@ function CVPreview({ userData, educationList, practicalExperienceList }) {
                         <p>{entry.location}</p>
                     </div>
                     <div className="entryDates">
-                        {entry.startDateOfStudy}
+                        {entry.startDate}
                         <span>-</span>
-                        {entry.endDateOfStudy
-                            ? entry.endDateOfStudy
-                            : "Present"}
+                        {entry.endDate ? entry.endDate : "Present"}
                     </div>
                     <div className="relevancyDisplay">
-                        {entry.relevantCourses}
+                        {entry.mainResponsibilities}
                     </div>
                 </div>
             ))}
