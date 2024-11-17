@@ -41,22 +41,22 @@ function CVPreview({ userData, educationList, practicalExperienceList }) {
     );
 
     const renderEducationExperience = () => (
-        <div className="previewEducationList">
+        <div className="entryListContainer">
             <h2 className="sectionHeader">Education</h2>
             {educationList.map((entry) => (
                 <div key={entry.id}>
                     <h2>{entry.titleOfStudy}</h2>
-                    <div className="schoolInformation">
+                    <div className="locationDisplay">
                         <h3>{entry.schoolName}</h3>
                         <span>|</span>
                         <p>{entry.location}</p>
                     </div>
-                    <div className="practicalDates">
+                    <div className="entryDates">
                         {entry.startDate}
                         <span>-</span>
                         {entry.endDateOfStudy ? entry.endDate : "Present"}
                     </div>
-                    <div className="displayResponsibilities">
+                    <div className="relevancyDisplay">
                         {entry.displayResponsibilities}
                     </div>
                 </div>
@@ -65,24 +65,24 @@ function CVPreview({ userData, educationList, practicalExperienceList }) {
     );
 
     const renderPracticalExperience = () => (
-        <div className="previewPracticalList">
+        <div className="entryListContainer">
             <h2 className="sectionHeader">Experience</h2>
             {practicalExperienceList.map((entry) => (
                 <div key={entry.id}>
                     <h2>{entry.positionTitle}</h2>
-                    <div className="workPlaceInformation">
+                    <div className="locationDisplay">
                         <h3>{entry.companyName}</h3>
                         <span>|</span>
                         <p>{entry.location}</p>
                     </div>
-                    <div className="educationDates">
+                    <div className="entryDates">
                         {entry.startDateOfStudy}
                         <span>-</span>
                         {entry.endDateOfStudy
                             ? entry.endDateOfStudy
                             : "Present"}
                     </div>
-                    <div className="displayCourseWork">
+                    <div className="relevancyDisplay">
                         {entry.relevantCourses}
                     </div>
                 </div>

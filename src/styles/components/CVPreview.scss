@@ -65,8 +65,7 @@
             font-size: 1.1rem;
         }
     }
-    .previewEducationList,
-    .previewPracticalList {
+    .entryListContainer {
         width: 100%;
         gap: 1.5rem;
         @include flex(column, space-between, center);
@@ -78,14 +77,12 @@
             border-bottom: 1px solid gray;
             width: 100%;
         }
-        .educationDates,
-        .practicalDates {
+        .entryDates {
             display: flex;
             gap: 0.5rem;
             font-size: 0.85rem;
         }
-        .schoolInformation,
-        .workPlaceInformation {
+        .locationDisplay {
             @include flex(row, flex-start, center);
             gap: 0.5rem;
             font-size: 0.85rem;
@@ -93,8 +90,7 @@
                 font-weight: bold;
             }
         }
-        .displayCourseWork,
-        .displayResponsibilities {
+        .relevancyDisplay {
             color: gray;
             font-size: 0.9rem;
             margin-bottom: 5px;
