@@ -3,7 +3,9 @@ import GeneralInformation from "./components/GeneralInformation";
 import EducationExperience from "./components/EducationExperience";
 import PracticalExperience from "./components/PracticalExperience";
 import CVPreview from "./components/CVPreview";
+import CustomizeCV from "./components/CustomizeCV";
 import { useState } from "react";
+import { usePDF } from "react-to-pdf";
 
 function App() {
     const generalInformationData = {
@@ -40,6 +42,9 @@ function App() {
         endDate: "",
     });
 
+    // CVPreview (download)
+    const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
+
     return (
         <div className="app">
             <div className="app__userInput__box">
@@ -67,6 +72,19 @@ function App() {
                     userData={userData}
                     educationList={educationList}
                     practicalExperienceList={practicalExperienceList}
+                />
+            </div>
+            <div className="customizeSection">
+                <CustomizeCV
+                    toPDF={toPDF}
+                    targetRef={targetRef}
+                    CVPreview={
+                        <CVPreview
+                            userData={userData}
+                            educationList={educationList}
+                            practicalExperienceList={practicalExperienceList}
+                        />
+                    }
                 />
             </div>
         </div>
