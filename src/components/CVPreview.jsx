@@ -3,8 +3,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons/faLinkedin";
 import { faGithub } from "@fortawesome/free-brands-svg-icons/faGithub";
+import { mergeRefs } from "react-merge-refs";
 
-function CVPreview({ userData, educationList, practicalExperienceList }) {
+function CVPreview({
+    userData,
+    educationList,
+    practicalExperienceList,
+    targetRef,
+}) {
     const contentRef = useRef(null);
     const [scale, setScale] = useState(1);
 
@@ -114,7 +120,7 @@ function CVPreview({ userData, educationList, practicalExperienceList }) {
     return (
         <div className="resume top">
             <div
-                ref={contentRef}
+                ref={mergeRefs([contentRef, targetRef])}
                 style={{
                     transform: `scale(${scale})`,
                     transformOrigin: "top left",

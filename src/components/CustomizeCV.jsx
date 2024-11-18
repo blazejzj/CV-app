@@ -1,8 +1,7 @@
-function CustomizeCV({ toPDF, targetRef }) {
+function CustomizeCV({ toPDF }) {
     const downloadSection = () => (
         <div>
             <button onClick={() => toPDF()}>Download CV</button>
-            <div ref={targetRef}></div>
         </div>
     );
 

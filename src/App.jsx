@@ -72,20 +72,11 @@ function App() {
                     userData={userData}
                     educationList={educationList}
                     practicalExperienceList={practicalExperienceList}
+                    targetRef={targetRef}
                 />
             </div>
             <div className="customizeSection">
-                <CustomizeCV
-                    toPDF={toPDF}
-                    targetRef={targetRef}
-                    CVPreview={
-                        <CVPreview
-                            userData={userData}
-                            educationList={educationList}
-                            practicalExperienceList={practicalExperienceList}
-                        />
-                    }
-                />
+                <CustomizeCV toPDF={toPDF} />
             </div>
         </div>
     );
