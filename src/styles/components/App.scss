@@ -3,15 +3,15 @@
 
 .app {
     display: grid;
-    grid-template-columns: 25% 75%;
-    max-width: $page-max-width;
+    grid-template-columns: 25% 50% 25%;
     width: 100%;
+    max-width: $page-max-width;
     padding: 32px 24px;
     gap: 24px;
 }
 
 .app__userInput__box {
-    @include flex(column, flex-start, flex-start);
+    @include flex(column, flex-start, center);
     @include fullSize;
     .app__userInput {
         @include flex(column, flex-start, stretch);
@@ -21,6 +21,7 @@
 }
 
 .app__userOutput {
+    place-self: center;
     background-color: $preview-bg-color;
     height: $cv-preview-height;
     width: $cv-preview-width;

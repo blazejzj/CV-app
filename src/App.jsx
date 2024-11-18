@@ -75,7 +75,7 @@ function App() {
                     targetRef={targetRef}
                 />
             </div>
-            <div className="customizeSection">
+            <div className="app__customize">
                 <CustomizeCV toPDF={toPDF} />
             </div>
         </div>
