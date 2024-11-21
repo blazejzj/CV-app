@@ -19,19 +19,19 @@ function CustomizeCV({ toPDF, setLayoutType, layoutType }) {
                     className={layoutType === "left" ? "active" : ""}
                     onClick={() => setLayoutType("left")}
                 >
-                    Left Layout
+                    Left
                 </button>
                 <button
                     className={layoutType === "top" ? "active" : ""}
                     onClick={() => setLayoutType("top")}
                 >
-                    Top Layout
+                    Top
                 </button>
                 <button
                     className={layoutType === "right" ? "active" : ""}
                     onClick={() => setLayoutType("right")}
                 >
-                    Right Layout
+                    Right
                 </button>
             </div>
         </div>

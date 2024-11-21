@@ -16,10 +16,8 @@ function CVPreview({
     const [scale, setScale] = useState(1);
 
     useEffect(() => {
-        // get height
+        // Adjust scaling if content overflows the page
         const contentHeight = contentRef.current.offsetHeight;
-
-        // define max height in px
         const maxHeightCm = 29.7;
         const cmToPx = 37.4;
         const maxHeightPx = maxHeightCm * cmToPx;
@@ -34,7 +32,6 @@ function CVPreview({
 
     const renderHeaderInfo = () => (
         <div className="personalInformation">
-            {console.log("UPDATED VALUES!")}
             <h1 className="personalName">{userData.name}</h1>
             <div className="personalDetails">
                 <div>
@@ -127,7 +124,7 @@ function CVPreview({
                     transformOrigin: "top left",
                     width: scale < 1 ? `${100 / scale}%` : "100%",
                 }}
-                className={layoutType}
+                className={`content ${layoutType}`}
             >
                 {renderHeaderInfo()}
                 <div className="CVDisplay">

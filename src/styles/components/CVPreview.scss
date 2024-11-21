@@ -1,51 +1,95 @@
 @import "../variables";
+
 .resume {
     font-family: Arial, Helvetica, sans-serif;
     height: 100%;
     position: sticky;
     top: 0;
     width: 100%;
-}
 
-.top {
-    grid-template-rows: auto 1fr;
-}
+    > .content {
+        display: grid;
 
-.left {
-    grid-template-columns: 44% 56%;
-}
+        grid-template-rows: auto 1fr;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "personal"
+            "CVDisplay";
 
-.right {
-    grid-template-columns: 56% 44%;
+        &.left {
+            grid-template-columns: 44% 56%;
+            grid-template-rows: auto;
+            grid-template-areas: "personal CVDisplay";
+        }
+        &.right {
+            grid-template-columns: 56% 44%;
+            grid-template-rows: auto;
+            grid-template-areas: "CVDisplay personal";
+        }
+    }
+    .personalInformation {
+        grid-area: personal;
+    }
+
+    .CVDisplay {
+        grid-area: CVDisplay;
+    }
 }
 
 .personalInformation {
-    @include flex(column, flex-start, stretch);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 2rem;
     width: 100%;
     padding: 36px 3rem 1rem 3rem;
+
     h1 {
         font-family: $font-CV-preview;
         font-weight: 700;
         font-size: $font-size-xxxl-responsive;
         text-align: center;
     }
+
     .personalDetails {
-        @include flex(row, center, stretch);
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
         gap: 1.5rem;
         font-size: $font-size-xs-responsive;
         border-bottom: 1px solid grey;
+        padding-bottom: 1rem;
+        width: 100%;
+
         > div {
-            @include flex(row, flex-start, stretch);
+            display: flex;
+            align-items: center;
             gap: 0.2rem;
-            margin-bottom: 1rem;
         }
     }
 }
 
+.left .personalInformation,
+.right .personalInformation {
+    flex-direction: column;
+    align-items: center;
+
+    .personalDetails {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+}
+
+.left .CVDisplay,
+.right .CVDisplay {
+    margin-top: 20px;
+}
+
 .sectionHeader {
     font-family: $font-CV-preview-second;
-    // color: rgb(107, 107, 107);
     border-bottom: 1px solid black;
     font-weight: 400;
     font-size: $font-size-large-responsive;
@@ -58,24 +102,26 @@
     @include flex(column, flex-start, center);
     gap: 1.2rem;
     padding: 0px 3rem;
+
     .introduction {
         @include flex(column, space-between, stretch);
         gap: 0.6rem;
         padding-bottom: 1rem;
         margin-top: 1rem;
         width: 100%;
-        // border-bottom: 1px solid gray;
+
         p {
             font-family: $font-CV-preview-second;
             font-size: $font-size-medium-responsive;
         }
     }
+
     .entryListContainer {
         width: 100%;
         gap: 0.5rem;
         @include flex(column, space-between, stretch);
-        // border-bottom: 1px solid gray;
         padding-bottom: 1rem;
+
         > div {
             align-self: flex-start;
             display: flex;
@@ -83,19 +129,23 @@
             gap: 0.3rem;
             width: 100%;
         }
+
         .entryDates {
             display: flex;
             gap: 0.5rem;
             font-size: 0.85rem;
         }
+
         .locationDisplay {
             @include flex(row, flex-start, center);
             gap: 0.5rem;
             font-size: 0.85rem;
+
             h3 {
                 font-weight: bold;
             }
         }
+
         .relevancyDisplay {
             color: gray;
             font-size: 0.9rem;
