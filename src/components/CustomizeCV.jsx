@@ -1,3 +1,4 @@
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faCircleArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -69,9 +70,25 @@ function CustomizeCV({
         </div>
     );
 
+    const renderGithub = () => (
+        <div className="credit">
+            <a href="https://github.com/blazejzj" target="_blank">
+                <FontAwesomeIcon
+                    icon={faGithub}
+                    size="1x"
+                    className="githubIcon"
+                />
+                Blazej
+            </a>
+        </div>
+    );
+
     return (
         <div className="customizeCV">
-            {downloadSection()}
+            <div className="creditNDownload">
+                {renderGithub()}
+                {downloadSection()}
+            </div>
             {chooseLayoutSection()}
             {chooseFontSection()}
         </div>
