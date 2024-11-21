@@ -1,7 +1,13 @@
 import { faCircleArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function CustomizeCV({ toPDF, setLayoutType, layoutType }) {
+function CustomizeCV({
+    toPDF,
+    setLayoutType,
+    layoutType,
+    setFontType,
+    fontType,
+}) {
     const downloadSection = () => (
         <div className="downloadSection">
             <button onClick={() => toPDF()}>
@@ -37,10 +43,37 @@ function CustomizeCV({ toPDF, setLayoutType, layoutType }) {
         </div>
     );
 
+    const chooseFontSection = () => (
+        <div className="fontSection section">
+            <h3>Font</h3>
+            <div className="fontButtons">
+                <button
+                    className={fontType === "arial" ? "active" : ""}
+                    onClick={() => setFontType("arial")}
+                >
+                    Arial
+                </button>
+                <button
+                    className={fontType === "times" ? "active" : ""}
+                    onClick={() => setFontType("times")}
+                >
+                    Times New Roman
+                </button>
+                <button
+                    className={fontType === "georgia" ? "active" : ""}
+                    onClick={() => setFontType("georgia")}
+                >
+                    Georgia
+                </button>
+            </div>
+        </div>
+    );
+
     return (
         <div className="customizeCV">
             {downloadSection()}
             {chooseLayoutSection()}
+            {chooseFontSection()}
         </div>
     );
 }

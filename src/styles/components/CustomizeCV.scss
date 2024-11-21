@@ -34,11 +34,12 @@
         }
     }
 
-    .layoutSection {
+    .section {
         width: 100%;
         text-align: center;
         padding: 1rem;
         border-left: 1rem solid $primary-color;
+        margin-bottom: 20px;
 
         h3 {
             font-size: 1.5rem;
@@ -46,7 +47,8 @@
             font-weight: 600;
         }
 
-        .layoutButtons {
+        .layoutButtons,
+        .fontButtons {
             display: flex;
             justify-content: center;
             gap: 10px;

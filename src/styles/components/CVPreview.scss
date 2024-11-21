@@ -45,7 +45,7 @@
     padding: 36px 3rem 1rem 3rem;
 
     h1 {
-        font-family: $font-CV-preview;
+        // font-family: $font-CV-preview;
         font-weight: 700;
         font-size: $font-size-xxxl-responsive;
         text-align: center;
@@ -58,7 +58,7 @@
         align-items: center;
         flex-wrap: wrap;
         gap: 1.5rem;
-        font-size: $font-size-small-responsive;
+        font-size: $font-size-medium-low-responsive;
         border-bottom: 1px solid grey;
         padding-bottom: 1rem;
         width: 100%;

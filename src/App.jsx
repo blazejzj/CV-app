@@ -48,6 +48,9 @@ function App() {
     // CVPreview adjust layout
     const [layoutType, setLayoutType] = useState("left");
 
+    // CVPreview adjust font
+    const [fontType, setFontType] = useState("arial");
+
     return (
         <div className="app">
             <div className="app__userInput__box">
@@ -77,6 +80,7 @@ function App() {
                     practicalExperienceList={practicalExperienceList}
                     targetRef={targetRef}
                     layoutType={layoutType}
+                    fontType={fontType}
                 />
             </div>
             <div className="app__customize">
@@ -84,6 +88,8 @@ function App() {
                     toPDF={toPDF}
                     setLayoutType={setLayoutType}
                     layoutType={layoutType}
+                    setFontType={setFontType}
+                    fontType={fontType}
                 />
             </div>
         </div>

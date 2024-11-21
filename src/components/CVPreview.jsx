@@ -11,6 +11,7 @@ function CVPreview({
     practicalExperienceList,
     targetRef,
     layoutType,
+    fontType,
 }) {
     const contentRef = useRef(null);
     const [scale, setScale] = useState(1);
@@ -29,6 +30,19 @@ function CVPreview({
             setScale(1);
         }
     }, [userData, educationList, practicalExperienceList]);
+
+    const getFontFamily = () => {
+        switch (fontType) {
+            case "arial":
+                return "Arial, Helvetica, sans-serif";
+            case "times":
+                return "'Times New Roman', Times, serif";
+            case "georgia":
+                return "Georgia, serif";
+            default:
+                return "Arial, Helvetica, sans-serif";
+        }
+    };
 
     const renderHeaderInfo = () => (
         <div className="personalInformation">
@@ -116,7 +130,7 @@ function CVPreview({
     );
 
     return (
-        <div className={`resume`}>
+        <div className="resume" style={{ fontFamily: getFontFamily() }}>
             <div
                 ref={mergeRefs([contentRef, targetRef])}
                 style={{
