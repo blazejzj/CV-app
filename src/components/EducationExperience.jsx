@@ -76,7 +76,7 @@ function EducationExperience({
             <h2>Add Education</h2>
             <form onSubmit={handleFormSubmit}>
                 <div>
-                    <label htmlFor="schoolName">School Name</label>
+                    <label htmlFor="schoolName">School Name *</label>
                     <input
                         type="text"
                         id="schoolName"
@@ -88,7 +88,7 @@ function EducationExperience({
                     />
                 </div>
                 <div>
-                    <label htmlFor="titleOfStudy">Title of Study</label>
+                    <label htmlFor="titleOfStudy">Title of Study *</label>
                     <input
                         type="text"
                         id="titleOfStudy"
@@ -100,7 +100,7 @@ function EducationExperience({
                     />
                 </div>
                 <div>
-                    <label htmlFor="location">Location</label>
+                    <label htmlFor="location">Location *</label>
                     <input
                         type="text"
                         id="location"
@@ -123,7 +123,7 @@ function EducationExperience({
                     />
                 </div>
                 <div>
-                    <label htmlFor="startDateOfStudy">Start Date</label>
+                    <label htmlFor="startDateOfStudy">Start Date *</label>
                     <input
                         type="month"
                         id="startDateOfStudy"
@@ -166,7 +166,7 @@ function EducationExperience({
                         >
                             <div>
                                 <label htmlFor={`schoolName-${entry.id}`}>
-                                    School Name
+                                    School Name *
                                 </label>
                                 <input
                                     type="text"
@@ -181,7 +181,7 @@ function EducationExperience({
                             </div>
                             <div>
                                 <label htmlFor={`titleOfStudy-${entry.id}`}>
-                                    Title of Study
+                                    Title of Study *
                                 </label>
                                 <input
                                     type="text"
@@ -196,7 +196,7 @@ function EducationExperience({
                             </div>
                             <div>
                                 <label htmlFor={`location-${entry.id}`}>
-                                    Location
+                                    Location *
                                 </label>
                                 <input
                                     type="text"
@@ -225,7 +225,7 @@ function EducationExperience({
                             </div>
                             <div>
                                 <label htmlFor={`startDateOfStudy-${entry.id}`}>
-                                    Start Date
+                                    Start Date *
                                 </label>
                                 <input
                                     type="month"

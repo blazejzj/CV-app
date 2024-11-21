@@ -76,56 +76,56 @@ function PracticalExperience({
             <h2>Add Practical Experience</h2>
             <form onSubmit={handleFormSubmit}>
                 <div>
-                    <label htmlFor="companyName">Company Name</label>
+                    <label htmlFor="companyName">Company Name *</label>
                     <input
                         type="text"
                         id="companyName"
                         name="companyName"
                         value={practicalData.companyName}
                         onChange={handleInputChange}
-                        required
                         placeholder="Enter Company Name ..."
+                        required
                     />
                 </div>
                 <div>
-                    <label htmlFor="positionTitle">Position Title</label>
+                    <label htmlFor="positionTitle">Position Title * </label>
                     <input
                         type="text"
                         id="positionTitle"
                         name="positionTitle"
                         value={practicalData.positionTitle}
                         onChange={handleInputChange}
-                        required
                         placeholder="Enter Position Title ..."
+                        required
                     />
                 </div>
                 <div>
                     <label htmlFor="mainResponsibilities">
-                        Main Responsibilities
+                        Main Responsibilities *
                     </label>
                     <textarea
                         id="mainResponsibilities"
                         name="mainResponsibilities"
                         value={practicalData.mainResponsibilities}
                         onChange={handleInputChange}
-                        required
                         placeholder="Describe your main tasks ..."
+                        required
                     ></textarea>
                 </div>
                 <div>
-                    <label htmlFor="location">Location</label>
+                    <label htmlFor="location">Location * </label>
                     <input
                         type="text"
                         id="location"
                         name="location"
                         value={practicalData.location}
                         onChange={handleInputChange}
-                        required
                         placeholder="Enter Location ..."
+                        required
                     />
                 </div>
                 <div>
-                    <label htmlFor="startDate">Start Date</label>
+                    <label htmlFor="startDate">Start Date * </label>
                     <input
                         type="month"
                         id="startDate"
@@ -167,7 +167,7 @@ function PracticalExperience({
                         >
                             <div>
                                 <label htmlFor={`companyName-${entry.id}`}>
-                                    Company Name
+                                    Company Name *
                                 </label>
                                 <input
                                     type="text"
@@ -182,7 +182,7 @@ function PracticalExperience({
                             </div>
                             <div>
                                 <label htmlFor={`positionTitle-${entry.id}`}>
-                                    Position Title
+                                    Position Title *
                                 </label>
                                 <input
                                     type="text"
@@ -197,7 +197,7 @@ function PracticalExperience({
                             </div>
                             <div>
                                 <label htmlFor={`location-${entry.id}`}>
-                                    Location
+                                    Location *
                                 </label>
                                 <input
                                     type="text"
@@ -214,7 +214,7 @@ function PracticalExperience({
                                 <label
                                     htmlFor={`mainResponsibilities-${entry.id}`}
                                 >
-                                    Main Responsibilities
+                                    Main Responsibilities *
                                 </label>
                                 <textarea
                                     id={`mainResponsibilities-${entry.id}`}
@@ -228,7 +228,7 @@ function PracticalExperience({
                             </div>
                             <div>
                                 <label htmlFor={`startDate-${entry.id}`}>
-                                    Start Date
+                                    Start Date *
                                 </label>
                                 <input
                                     type="month"

@@ -4,7 +4,6 @@ function GeneralInformation({ formData, setFormData }) {
     const [isEditing, setIsEditing] = useState(false);
 
     const handleInputChange = (e) => {
-        console.log("updated data");
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
@@ -19,7 +18,7 @@ function GeneralInformation({ formData, setFormData }) {
             <h1>General Information</h1>
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label htmlFor="name">Name</label>
+                    <label htmlFor="name">Name *</label>
                     <input
                         type="text"
                         id="name"
@@ -31,7 +30,7 @@ function GeneralInformation({ formData, setFormData }) {
                     />
                 </div>
                 <div>
-                    <label htmlFor="email">E-mail</label>
+                    <label htmlFor="email">E-mail *</label>
                     <input
                         type="email"
                         id="email"
@@ -43,7 +42,7 @@ function GeneralInformation({ formData, setFormData }) {
                     />
                 </div>
                 <div>
-                    <label htmlFor="phoneNumber">Phone Number</label>
+                    <label htmlFor="phoneNumber">Phone Number *</label>
                     <input
                         type="tel"
                         id="phoneNumber"
