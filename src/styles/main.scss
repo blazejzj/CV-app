@@ -46,7 +46,9 @@ label {
 }
 
 // COMMON CLASSES
-
+.sectionBorder {
+    border-right: 1rem solid $primary-color;
+}
 .section {
     border-radius: 12px;
     background-color: $card-bg-color;

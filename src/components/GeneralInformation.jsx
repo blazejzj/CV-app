@@ -15,7 +15,7 @@ function GeneralInformation({ formData, setFormData }) {
     };
 
     const renderEditMode = () => (
-        <div className="general-info-standard general-info-edit-mode section">
+        <div className="general-info-standard general-info-edit-mode section sectionBorder">
             <h1>General Information</h1>
             <form onSubmit={handleSubmit}>
                 <div>
@@ -93,7 +93,7 @@ function GeneralInformation({ formData, setFormData }) {
     );
 
     const renderViewMode = () => (
-        <div className="general-info-standard section general-info-view-mode">
+        <div className="general-info-standard section general-info-view-mode sectionBorder">
             <h1>General Information</h1>
             <div>
                 <p>Name</p>

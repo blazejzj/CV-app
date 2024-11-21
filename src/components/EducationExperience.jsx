@@ -72,7 +72,7 @@ function EducationExperience({
 
     // render the form for adding a new education entry
     const renderAddForm = () => (
-        <div className="section form-section">
+        <div className="section form-section sectionBorder">
             <h2>Add Education</h2>
             <form onSubmit={handleFormSubmit}>
                 <div>
@@ -160,7 +160,7 @@ function EducationExperience({
         <div className="addedEntriesContainer">
             {educationList.map((entry) =>
                 entry.isEditing ? (
-                    <div key={entry.id} className="entryEditing section">
+                    <div key={entry.id} className="entryEditing section ">
                         <form
                             onSubmit={(e) => handleEditFormSubmit(e, entry.id)}
                         >
@@ -256,7 +256,6 @@ function EducationExperience({
                         </form>
                     </div>
                 ) : (
-                    // Render the entry in view mode
                     <div
                         key={entry.id}
                         className="addedEntriesViewMode section card-bg-color"
@@ -280,7 +279,7 @@ function EducationExperience({
     );
 
     const renderViewMode = () => (
-        <div className="section expand-section">
+        <div className="section expand-section sectionBorder">
             <div className="viewModeContainerIcon">
                 <h1>Education Experience</h1>
                 <FontAwesomeIcon icon={faGraduationCap} size="lg" />

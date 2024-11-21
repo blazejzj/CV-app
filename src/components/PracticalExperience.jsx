@@ -72,7 +72,7 @@ function PracticalExperience({
     };
 
     const renderAddForm = () => (
-        <div className="section form-section">
+        <div className="section form-section sectionBorder">
             <h2>Add Practical Experience</h2>
             <form onSubmit={handleFormSubmit}>
                 <div>
@@ -161,7 +161,7 @@ function PracticalExperience({
         <div className="addedEntriesContainer">
             {practicalExperienceList.map((entry) =>
                 entry.isEditing ? (
-                    <div key={entry.id} className="entryEditing section">
+                    <div key={entry.id} className="entryEditing section ">
                         <form
                             onSubmit={(e) => handleEditFormSubmit(e, entry.id)}
                         >
@@ -282,7 +282,7 @@ function PracticalExperience({
     );
 
     const renderViewMode = () => (
-        <div className="card-bg-color section expand-section">
+        <div className="card-bg-color section expand-section sectionBorder">
             <div className="viewModeContainerIcon">
                 <h1>Practical Experience</h1>
                 <FontAwesomeIcon icon={faBriefcase} size="lg" />

@@ -12,7 +12,7 @@ function CustomizeCV({ toPDF, setLayoutType, layoutType }) {
     );
 
     const chooseLayoutSection = () => (
-        <div className="layoutSection">
+        <div className="layoutSection section">
             <h3>Choose Layout</h3>
             <div className="layoutButtons">
                 <button
