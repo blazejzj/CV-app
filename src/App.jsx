@@ -46,7 +46,7 @@ function App() {
     const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
 
     // CVPreview adjust layout
-    const [layoutType, setLayoutType] = useState("top");
+    const [layoutType, setLayoutType] = useState("left");
 
     return (
         <div className="app">
@@ -80,7 +80,11 @@ function App() {
                 />
             </div>
             <div className="app__customize">
-                <CustomizeCV toPDF={toPDF} setLayoutType={setLayoutType} />
+                <CustomizeCV
+                    toPDF={toPDF}
+                    setLayoutType={setLayoutType}
+                    layoutType={layoutType}
+                />
             </div>
         </div>
     );

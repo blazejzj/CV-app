@@ -119,7 +119,7 @@ function CVPreview({
     );
 
     return (
-        <div className={`resume ${layoutType}`}>
+        <div className={`resume`}>
             <div
                 ref={mergeRefs([contentRef, targetRef])}
                 style={{
@@ -127,6 +127,7 @@ function CVPreview({
                     transformOrigin: "top left",
                     width: scale < 1 ? `${100 / scale}%` : "100%",
                 }}
+                className={layoutType}
             >
                 {renderHeaderInfo()}
                 <div className="CVDisplay">
