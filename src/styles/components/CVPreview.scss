@@ -11,6 +11,14 @@
     grid-template-rows: auto 1fr;
 }
 
+.left {
+    grid-template-columns: 44% 56%;
+}
+
+.right {
+    grid-template-columns: 56% 44%;
+}
+
 .personalInformation {
     @include flex(column, flex-start, stretch);
     gap: 2rem;

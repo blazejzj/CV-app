@@ -10,6 +10,7 @@ function CVPreview({
     educationList,
     practicalExperienceList,
     targetRef,
+    layoutType,
 }) {
     const contentRef = useRef(null);
     const [scale, setScale] = useState(1);
@@ -118,7 +119,7 @@ function CVPreview({
     );
 
     return (
-        <div className="resume top">
+        <div className={`resume ${layoutType}`}>
             <div
                 ref={mergeRefs([contentRef, targetRef])}
                 style={{

@@ -45,6 +45,9 @@ function App() {
     // CVPreview (download)
     const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
 
+    // CVPreview adjust layout
+    const [layoutType, setLayoutType] = useState("top");
+
     return (
         <div className="app">
             <div className="app__userInput__box">
@@ -73,10 +76,11 @@ function App() {
                     educationList={educationList}
                     practicalExperienceList={practicalExperienceList}
                     targetRef={targetRef}
+                    layoutType={layoutType}
                 />
             </div>
             <div className="app__customize">
-                <CustomizeCV toPDF={toPDF} />
+                <CustomizeCV toPDF={toPDF} setLayoutType={setLayoutType} />
             </div>
         </div>
     );
