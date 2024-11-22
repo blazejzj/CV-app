@@ -5,7 +5,7 @@ import PracticalExperience from "./components/PracticalExperience";
 import CVPreview from "./components/CVPreview";
 import CustomizeCV from "./components/CustomizeCV";
 import { useState } from "react";
-import { usePDF } from "react-to-pdf";
+import { Resolution, usePDF } from "react-to-pdf";
 
 function App() {
     const generalInformationData = {
@@ -43,7 +43,14 @@ function App() {
     });
 
     // CVPreview (download)
-    const { toPDF, targetRef } = usePDF({ filename: "page.pdf" });
+    const options = {
+        resolution: Resolution.EXTREME,
+        canvas: {
+            mimeType: "image/png",
+            qualityRatio: 2,
+        },
+    };
+    const { toPDF, targetRef } = usePDF({ filename: "page.pdf" }, options);
 
     // CVPreview adjust layout
     const [layoutType, setLayoutType] = useState("left");
