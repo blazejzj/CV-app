@@ -58,6 +58,9 @@ function App() {
     // CVPreview adjust font
     const [fontType, setFontType] = useState("arial");
 
+    // Photo
+    const [profilePicture, setProfilePicture] = useState(null);
+
     return (
         <div className="app">
             <div className="app__userInput__box">
@@ -88,6 +91,7 @@ function App() {
                     targetRef={targetRef}
                     layoutType={layoutType}
                     fontType={fontType}
+                    profilePicture={profilePicture}
                 />
             </div>
             <div className="app__customize">
@@ -97,6 +101,7 @@ function App() {
                     layoutType={layoutType}
                     setFontType={setFontType}
                     fontType={fontType}
+                    setProfilePicture={setProfilePicture}
                 />
             </div>
         </div>

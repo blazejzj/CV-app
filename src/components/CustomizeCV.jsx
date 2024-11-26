@@ -1,6 +1,8 @@
+import { useState, useRef } from "react";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { faCircleArrowDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import AvatarEditor from "react-avatar-editor";
 
 function CustomizeCV({
     toPDF,
@@ -8,7 +10,19 @@ function CustomizeCV({
     layoutType,
     setFontType,
     fontType,
+    setProfilePicture,
 }) {
+    const [selectedImage, setSelectedImage] = useState(null);
+    const editorRef = useRef(null);
+
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setSelectedImage(file);
+            setProfilePicture(URL.createObjectURL(file));
+        }
+    };
+
     const downloadSection = () => (
         <div className="downloadSection">
             <button onClick={() => toPDF()}>
@@ -72,7 +86,11 @@ function CustomizeCV({
 
     const renderGithub = () => (
         <div className="credit">
-            <a href="https://github.com/blazejzj" target="_blank">
+            <a
+                href="https://github.com/blazejzj"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
                 <FontAwesomeIcon
                     icon={faGithub}
                     size="1x"
@@ -80,6 +98,33 @@ function CustomizeCV({
                 />
                 Blazej
             </a>
+        </div>
+    );
+
+    const renderProfilePicture = () => (
+        <div className="profilePictureContainer section">
+            <h1>Photo</h1>
+            <form>
+                <input
+                    type="file"
+                    id="profilePicture"
+                    name="profilePicture"
+                    accept="image/png, image/jpeg"
+                    onChange={handleImageChange}
+                />
+            </form>
+            {selectedImage && (
+                <AvatarEditor
+                    ref={editorRef}
+                    image={selectedImage}
+                    width={250}
+                    height={250}
+                    border={50}
+                    color={[255, 255, 255, 0.6]}
+                    scale={1.2}
+                    rotate={0}
+                />
+            )}
         </div>
     );
 
@@ -91,6 +136,7 @@ function CustomizeCV({
             </div>
             {chooseLayoutSection()}
             {chooseFontSection()}
+            {renderProfilePicture()}
         </div>
     );
 }

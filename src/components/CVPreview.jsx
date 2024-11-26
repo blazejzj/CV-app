@@ -12,6 +12,7 @@ function CVPreview({
     targetRef,
     layoutType,
     fontType,
+    profilePicture,
 }) {
     const contentRef = useRef(null);
     const [scale, setScale] = useState(1);
@@ -69,6 +70,13 @@ function CVPreview({
                     </div>
                 )}
             </div>
+            {profilePicture && (
+                <img
+                    src={profilePicture}
+                    alt="Profile Picture"
+                    className="profilePicture"
+                />
+            )}
         </div>
     );
 
