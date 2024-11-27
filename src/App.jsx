@@ -53,7 +53,7 @@ function App() {
     const { toPDF, targetRef } = usePDF({ filename: "page.pdf" }, options);
 
     // CVPreview adjust layout
-    const [layoutType, setLayoutType] = useState("left");
+    const [layoutType, setLayoutType] = useState("top");
 
     // CVPreview adjust font
     const [fontType, setFontType] = useState("arial");

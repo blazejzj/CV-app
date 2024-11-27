@@ -47,7 +47,21 @@ function CVPreview({
 
     const renderHeaderInfo = () => (
         <div className="personalInformation">
-            <h1 className="personalName">{userData.name}</h1>
+            <div
+                className={`nameAndPictureContainer ${
+                    profilePicture ? "with-picture" : "no-picture"
+                }`}
+            >
+                <h1 className="personalName">{userData.name}</h1>
+                {profilePicture && (
+                    <img
+                        src={profilePicture}
+                        alt="Profile"
+                        className="profilePicture"
+                    />
+                )}
+            </div>
+
             <div className="personalDetails">
                 <div>
                     <FontAwesomeIcon icon={faPhone} size="lg" />
@@ -70,13 +84,6 @@ function CVPreview({
                     </div>
                 )}
             </div>
-            {profilePicture && (
-                <img
-                    src={profilePicture}
-                    alt="Profile Picture"
-                    className="profilePicture"
-                />
-            )}
         </div>
     );
 
@@ -138,7 +145,10 @@ function CVPreview({
     );
 
     return (
-        <div className="resume" style={{ fontFamily: getFontFamily() }}>
+        <div
+            className={`resume ${layoutType}`}
+            style={{ fontFamily: getFontFamily() }}
+        >
             <div
                 ref={mergeRefs([contentRef, targetRef])}
                 style={{
