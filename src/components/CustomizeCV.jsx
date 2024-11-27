@@ -13,13 +13,22 @@ function CustomizeCV({
     setProfilePicture,
 }) {
     const [selectedImage, setSelectedImage] = useState(null);
+    const [scale, setScale] = useState(1);
+    const [rotate, setRotate] = useState(0);
     const editorRef = useRef(null);
 
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         if (file) {
             setSelectedImage(file);
-            setProfilePicture(URL.createObjectURL(file));
+        }
+    };
+
+    const handleSave = () => {
+        if (editorRef.current) {
+            const canvas = editorRef.current.getImageScaledToCanvas();
+            const dataURL = canvas.toDataURL();
+            setProfilePicture(dataURL);
         }
     };
 
@@ -103,27 +112,59 @@ function CustomizeCV({
 
     const renderProfilePicture = () => (
         <div className="profilePictureContainer section">
-            <h1>Photo</h1>
-            <form>
+            <h3>Photo</h3>
+            <label className="profileInputLabel">
+                Upload Photo
                 <input
                     type="file"
                     id="profilePicture"
                     name="profilePicture"
                     accept="image/png, image/jpeg"
                     onChange={handleImageChange}
+                    className="profileInput"
                 />
-            </form>
+            </label>
             {selectedImage && (
-                <AvatarEditor
-                    ref={editorRef}
-                    image={selectedImage}
-                    width={250}
-                    height={250}
-                    border={50}
-                    color={[255, 255, 255, 0.6]}
-                    scale={1.2}
-                    rotate={0}
-                />
+                <div className="editorContainer">
+                    <AvatarEditor
+                        ref={editorRef}
+                        image={selectedImage}
+                        width={250}
+                        height={250}
+                        border={50}
+                        color={[255, 255, 255, 0.6]}
+                        scale={scale}
+                        rotate={rotate}
+                    />
+                    <div className="controls">
+                        <label>
+                            Scale:
+                            <input
+                                type="range"
+                                value={scale}
+                                min="1"
+                                max="3"
+                                step="0.01"
+                                onChange={(e) =>
+                                    setScale(parseFloat(e.target.value))
+                                }
+                            />
+                        </label>
+                        <label>
+                            Rotate:
+                            <input
+                                type="number"
+                                value={rotate}
+                                onChange={(e) =>
+                                    setRotate(parseFloat(e.target.value))
+                                }
+                            />
+                        </label>
+                        <button onClick={handleSave} className="saveButton">
+                            Save
+                        </button>
+                    </div>
+                </div>
             )}
         </div>
     );
