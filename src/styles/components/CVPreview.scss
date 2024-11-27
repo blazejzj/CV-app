@@ -109,11 +109,11 @@
 
         h1 {
             text-align: center;
-            flex: none; // Remove flex to prevent stretching
+            flex: none;
         }
 
         &.with-picture {
-            justify-content: center; // Center the content
+            justify-content: center;
         }
     }
 
